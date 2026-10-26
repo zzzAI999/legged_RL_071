@@ -1,0 +1,7 @@
+"""Explicit corrected actuator/ACK semantics, separate from frozen v2 training."""
+from .recovery_contract import contract
+
+def deployment_contract():
+    value = contract()
+    value.update(schema='dogleg_random_recovery_deployment_v2', previous_action='last completed six-output batch: slew-limited calibrated target offsets/(leg_sign*1.15); nominal torque decoded from actual C620 integer command/(wheel_sign*.8)', wheel_command_counts_limit=2184, wheel_command_counts_per_A=819.2, wheel_previous_includes_plant_strength=False, wheel_max_nominal_command_torque_Nm=2184 / 819.2 * 0.3, wheel_current_quantization='float32 round away from zero, then clamp to +/-2184 counts', previous_ack_timestamp='PD batch calculation time and six-output completion time are distinct; acknowledge only retained completed generation', initial_admission='measured calibrated offset of every leg must be within +/-1.15rad; preload target equals measured angle', simulation_ack_transport='at each 100Hz state tick latch completed 2ms batch; actor sees ACK with same sampled observation latency', simulation_CAN_completion_assumption='six outputs complete each 2ms update; no packet/TxComplete loss yet modelled', original_training_v2_difference='wheel previous includes physical strength; target preload excludes sensor zero bias; ACK is immediate and wheel command continuous', qualified_deployment=False, ready_for_hardware=False)
+    return value

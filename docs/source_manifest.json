@@ -1,0 +1,322 @@
+{
+  "active_modules": [
+    {
+      "module": "bounded_adaptive_ppo",
+      "source_group": "dogleg_recovery_20261012",
+      "original_sha256": "f31c02703b60e723fd484ca943bd9699076d0c9ea9602c8c4f5b3f5041bf1ca8",
+      "packaged_sha256": "edb6d431db0ccb9cc1e5f50abffbb69165b3e2eaf9dfb57040f02db29c95a51d",
+      "change": "package imports; three asset lookup roots only; numerical AST retained"
+    },
+    {
+      "module": "command_contract",
+      "source_group": "dogleg_isaac_skills_20261009_v2",
+      "original_sha256": "00ff46ca6d043ce97c7b7d4dbe6e7588ef6f6a4a569e111a89123d991ce81ea9",
+      "packaged_sha256": "f46610a43e059c072df30cd8c9f37ef7fef3faaa3b3f2a7c00e7c165821e2cef",
+      "change": "package imports; three asset lookup roots only; numerical AST retained"
+    },
+    {
+      "module": "deployment_contract",
+      "source_group": "dogleg_recovery_20261012",
+      "original_sha256": "559c6367d8b6f9b30ba126cfe5c77d6ff51f9770f710e17c96dd80a6761ecce0",
+      "packaged_sha256": "cc470ac969f3556e5aa30171bac112967f875b26df8dc4765921e7b038680935",
+      "change": "package imports; three asset lookup roots only; numerical AST retained"
+    },
+    {
+      "module": "deployment_environment",
+      "source_group": "dogleg_recovery_20261012",
+      "original_sha256": "19f0eb6e6774a70a8fd7f5e8f4d303a4cb5509ad47042942ddeba96ecbdb41a4",
+      "packaged_sha256": "83646661476fe84999418d8e8133d0a8dc8c764d1b3fcefd637382aff42af59b",
+      "change": "package imports; three asset lookup roots only; numerical AST retained"
+    },
+    {
+      "module": "inertia_contract",
+      "source_group": "dogleg_isaac_skills_20261009_v2",
+      "original_sha256": "6219745e26dbaf2dca04a69695efe0078c41da0a62ba86b5475cab95c75584e7",
+      "packaged_sha256": "bcb45b06a54d264395a7e646e52447e1a9271d61d1b372d5e27508376d8f52ef",
+      "change": "package imports; three asset lookup roots only; numerical AST retained"
+    },
+    {
+      "module": "inertial_randomization",
+      "source_group": "dogleg_isaac_skills_20261009_v2",
+      "original_sha256": "e8f6b080a383aa21b956c222d67bfdceca023c407d27ed2fe2714ccd4db534d4",
+      "packaged_sha256": "e906cfce821dd1f3d586188c506d3d88443be33a025504e55bf76d6a32857729",
+      "change": "package imports; three asset lookup roots only; numerical AST retained"
+    },
+    {
+      "module": "lab_environment",
+      "source_group": "dogleg_isaac_command_20261009_v1",
+      "original_sha256": "fa847d6fb4113011f9b1e24ff62b0b5512b621db852e855eb941ec627080b00c",
+      "packaged_sha256": "ce69ce8962a8862e8daa1173351a0a10623aea7cf2c775c7f1878673b5e47fb9",
+      "change": "package imports; three asset lookup roots only; numerical AST retained"
+    },
+    {
+      "module": "policy_architecture",
+      "source_group": "dogleg_recovery_20261012",
+      "original_sha256": "2e1e87c44aea357095b445ffb77a1bd309a5e9f8ef6d280449acebf0bc033006",
+      "packaged_sha256": "c40ef6258dd8be19cb4ecd7e96a1459f5cf0b1a5b4d1153ed054ab4a1a6922a5",
+      "change": "package imports; three asset lookup roots only; numerical AST retained"
+    },
+    {
+      "module": "recovery_contract",
+      "source_group": "dogleg_recovery_20261012",
+      "original_sha256": "5258aab0ff9edea7eac929580cdb7880541a181fa434eb4210546d4cdb0b36d7",
+      "packaged_sha256": "5fb9b841ee4c5a0f791c90bd1d0d3ad765243b5317701b34d6b6b49729a15c9f",
+      "change": "package imports; three asset lookup roots only; numerical AST retained"
+    },
+    {
+      "module": "recovery_contract_v3",
+      "source_group": "dogleg_recovery_20261012",
+      "original_sha256": "31174733bef1eedf795d7f9ff5c2b618a7a47a946d82a5f7df4846892e5a73cd",
+      "packaged_sha256": "35ff8ba8095a46fb7811f534de7e45ce9e6748c1d6395b3d059acddae8a11058",
+      "change": "package imports; three asset lookup roots only; numerical AST retained"
+    },
+    {
+      "module": "recovery_contract_v4",
+      "source_group": "dogleg_recovery_20261012",
+      "original_sha256": "82e2feeb266170219e58abc74ee1ac36fc5db57692a6165e1024719f1a033998",
+      "packaged_sha256": "9143b38041a7bd0bada92e8f3798cb69518bedafe7482d1405f5a349751e68c2",
+      "change": "package imports; three asset lookup roots only; numerical AST retained"
+    },
+    {
+      "module": "recovery_environment",
+      "source_group": "dogleg_recovery_20261012",
+      "original_sha256": "01b953c5ac932dde87c597a5369f30707ec02e33bf816a2be3b4da5347510a96",
+      "packaged_sha256": "ce457c1ab7276f109fe74b488466ecc2e601128c65ffca8c31783055e1cc27c1",
+      "change": "package imports; three asset lookup roots only; numerical AST retained"
+    },
+    {
+      "module": "repair_rewards",
+      "source_group": "dogleg_isaac_skills_20261009_v2",
+      "original_sha256": "5b4c3a323de303f5cdca78e3aa1f6620d2e0690c92292b7960652c7952d0a058",
+      "packaged_sha256": "1f7ea8bf58b42e64318ac41b9ae80ef688aee286c1c056873892eeb1ec4200c7",
+      "change": "package imports; three asset lookup roots only; numerical AST retained"
+    },
+    {
+      "module": "skills_environment",
+      "source_group": "dogleg_isaac_skills_20261009_v2",
+      "original_sha256": "d178e1104f178126bcb03a0d7687bb2214e47d46c0659decc3fdf388c3e52a59",
+      "packaged_sha256": "4ad758e939dec92a6ebce8af8d6c0ed2dada1a6433450f16c7ecee19151811ad",
+      "change": "package imports; three asset lookup roots only; numerical AST retained"
+    },
+    {
+      "module": "standing_environment",
+      "source_group": "dogleg_recovery_20261012",
+      "original_sha256": "b6bf624ba03a35d1ac78fe16d1c2bfa8df8e634af5bf6758d04fcbc944b37605",
+      "packaged_sha256": "f4c30c80f802950d3a827b83ebdb368ce56aec359f08cfd67740d6a0fc56a981",
+      "change": "package imports; three asset lookup roots only; numerical AST retained"
+    },
+    {
+      "module": "standing_environment_guard",
+      "source_group": "dogleg_recovery_20261012",
+      "original_sha256": "d30cd5516bcc85b411503b9beac49860d6d8aa7fca8624263d7527e222dc538b",
+      "packaged_sha256": "3ad9d47a340e4b0330f847a9a1d6ecdcf4ee7e2932b73eb20004598316f45fa2",
+      "change": "package imports; three asset lookup roots only; numerical AST retained"
+    },
+    {
+      "module": "standing_environment_guard_v2",
+      "source_group": "dogleg_recovery_20261012",
+      "original_sha256": "7add31c1407f413ef2cdf0dff581c64623e60f51f9f3be4ef4ac4220ea9f631f",
+      "packaged_sha256": "48e99c9508fbd3caa61aaf55e32979b54dfbe846a78d64e3c2e288dfc93d9271",
+      "change": "package imports; three asset lookup roots only; numerical AST retained"
+    },
+    {
+      "module": "standing_environment_gyro_penalty_v1",
+      "source_group": "dogleg_recovery_20261012",
+      "original_sha256": "698bc6fad62b2dc2018e51f621fc226c911d11b7cc34b7bf5a396a297452cc67",
+      "packaged_sha256": "e9f5b046a9268e163450b79c06e084678c77bb25cb105991600d1bd77ef2c1be",
+      "change": "package imports; three asset lookup roots only; numerical AST retained"
+    },
+    {
+      "module": "standing_environment_leg_velocity_v1",
+      "source_group": "dogleg_recovery_20261012",
+      "original_sha256": "782de6f7b9b9702f66f8949e9a7be7b71e41b65ac0f11bcf718fd52d125ad1e7",
+      "packaged_sha256": "9233eceb818570db11844ea0cd4c766e872e9c117de7386522e70dc2406d7b85",
+      "change": "package imports; three asset lookup roots only; numerical AST retained"
+    },
+    {
+      "module": "standing_environment_margin_v1",
+      "source_group": "dogleg_recovery_20261012",
+      "original_sha256": "c537b17d2dd067e129218cac73c5d7a2c0fec9271a9819aff965d62a11e811ae",
+      "packaged_sha256": "a40803047f6b1b9a08311390682cbb97e7f2373d747ef0322e594b4e60317f82",
+      "change": "package imports; three asset lookup roots only; numerical AST retained"
+    },
+    {
+      "module": "standing_environment_v6",
+      "source_group": "dogleg_recovery_20261012",
+      "original_sha256": "0935dfbdde3b42482d95b144ae6e6baf91538e3e00e312ab96ff0e90670ca167",
+      "packaged_sha256": "d4d893a12c465952264ce1024253d180b637625d8429c31b53dd8cf281acbc93",
+      "change": "package imports; three asset lookup roots only; numerical AST retained"
+    },
+    {
+      "module": "standing_environment_v7",
+      "source_group": "dogleg_recovery_20261012",
+      "original_sha256": "696445fbf3d7c44445740f838b253edb67680f7f367f13f27bdaee1652a7bc75",
+      "packaged_sha256": "6c22b3572b4db74933f70a4022ccd2834bc3426c5470b64058cbcc8f8cd29c8e",
+      "change": "package imports; three asset lookup roots only; numerical AST retained"
+    },
+    {
+      "module": "standing_environment_v8",
+      "source_group": "dogleg_recovery_20261012",
+      "original_sha256": "e3c1f7f385b8c86fc7299e0ff962faa10f0d01ea8c61db430170e89b43308c25",
+      "packaged_sha256": "dff12724ff55d931f6bc87d8a50edb01a72f43cfe29250a1664c303ace762614",
+      "change": "package imports; three asset lookup roots only; numerical AST retained"
+    },
+    {
+      "module": "standing_guard_protocol",
+      "source_group": "dogleg_recovery_20261012",
+      "original_sha256": "d7124ed9656d049cb54cb9a5969cf04efa48b975bf41cb7238e9b37ae83c3825",
+      "packaged_sha256": "def628eb6f25e7c6c0497bb48d18acf8dffa073ba250ad4cc03010d9d8a35aff",
+      "change": "package imports; three asset lookup roots only; numerical AST retained"
+    },
+    {
+      "module": "standing_gyro_penalty_reward_v1",
+      "source_group": "dogleg_recovery_20261012",
+      "original_sha256": "238cf6b7787cbdaa1511a715504cba28e25cd679df8d49d290e67e483947a5fd",
+      "packaged_sha256": "a7bf309e9d8eb17952181afd58d67e3e1e8fcd239834b12441bff48d513ef938",
+      "change": "package imports; three asset lookup roots only; numerical AST retained"
+    },
+    {
+      "module": "standing_leg_velocity_restore_v1",
+      "source_group": "dogleg_recovery_20261012",
+      "original_sha256": "7516d1ef700c19a95f66700a2dfb7bf0437c496da1e29ebf0fd51c04ff7f487e",
+      "packaged_sha256": "e2e6d5651d56b9a9e5e247df59d8ceb3911fd2515a0684138500b3ced228f20b",
+      "change": "package imports; three asset lookup roots only; numerical AST retained"
+    },
+    {
+      "module": "standing_leg_velocity_reward_v1",
+      "source_group": "dogleg_recovery_20261012",
+      "original_sha256": "4e64c636425f028a01afd82710557a55ab414f90abd8f2e5247f9da5b2b71419",
+      "packaged_sha256": "fb95ce92975f76824b5927803cfa1a23b7f8a0074632d28a79bfc4add6a8aeca",
+      "change": "package imports; three asset lookup roots only; numerical AST retained"
+    },
+    {
+      "module": "standing_margin_reward",
+      "source_group": "dogleg_recovery_20261012",
+      "original_sha256": "e13f2c7893cb341e8aa58b6f222defcbfe11855fa9c0dbd12e2f5a7198388b86",
+      "packaged_sha256": "775614904f9aecf40e98aaea5270be48d3a04f5ad91c2855c9d32345e62d4cde",
+      "change": "package imports; three asset lookup roots only; numerical AST retained"
+    },
+    {
+      "module": "standing_math",
+      "source_group": "dogleg_recovery_20261012",
+      "original_sha256": "694e4c5986c00d6a62d544483bc8bb44651f55f4554bafb5f4663279a91d228b",
+      "packaged_sha256": "4133a9a9e97bcb4ce252a953e4040fe7ac25ed1da87a55ac274a56a60973a657",
+      "change": "package imports; three asset lookup roots only; numerical AST retained"
+    },
+    {
+      "module": "standing_math_guard",
+      "source_group": "dogleg_recovery_20261012",
+      "original_sha256": "537f8f87626bf3e874830746d3c9a1ff411e30667958e5f6e59c65adab25fa10",
+      "packaged_sha256": "3d8ef89697098fad722da483ae55b289edfe26d262e3f474dc6f36d42f1a2b6c",
+      "change": "package imports; three asset lookup roots only; numerical AST retained"
+    },
+    {
+      "module": "standing_math_v6",
+      "source_group": "dogleg_recovery_20261012",
+      "original_sha256": "73e7ab5992ae8d77abeabcb9292928e33f5ffcddc4d99931eafa9929d10d2a2a",
+      "packaged_sha256": "29ea2c988fb3497ff209ecfe67345faa8f590d13294d5bcbfe5a893a60f1b443",
+      "change": "package imports; three asset lookup roots only; numerical AST retained"
+    },
+    {
+      "module": "standing_math_v7",
+      "source_group": "dogleg_recovery_20261012",
+      "original_sha256": "5d2df5a5ff688cbe87b17b121d53d7307a21ae8b8847df7df630b8525908efd2",
+      "packaged_sha256": "dbef15bdc04711f3cecb0e3224091c12f841cb06a811c9d025aa9a3727a4bbb6",
+      "change": "package imports; three asset lookup roots only; numerical AST retained"
+    },
+    {
+      "module": "standing_math_v8",
+      "source_group": "dogleg_recovery_20261012",
+      "original_sha256": "6c9726e55eabf2cd43789b52d5c0189ac78d45a0ea55fea6839ce6fb5acacd59",
+      "packaged_sha256": "4b2cc459d98f01d55a5b5d61fdb3303a63c706818e437dd5790ea3ccd2af5ca4",
+      "change": "package imports; three asset lookup roots only; numerical AST retained"
+    },
+    {
+      "module": "standing_training_state",
+      "source_group": "dogleg_recovery_20261012",
+      "original_sha256": "7fb731c30eb7868db978c738929f0f525848682e6fbfb059b753a95759386e36",
+      "packaged_sha256": "b73421d0f5991477eac176a6bce995dc8f7373009adb1a6a7d84df64e805e1d8",
+      "change": "package imports; three asset lookup roots only; numerical AST retained"
+    },
+    {
+      "module": "wheel_current_guard",
+      "source_group": "dogleg_recovery_20261012",
+      "original_sha256": "3824da614c2684a7d57cefb3ed7b92b5018421648fba0637d0e8d8601c569fbd",
+      "packaged_sha256": "bb559ba42c53cef8c87b03e33eb9847e5f2d5a1a341cc7df9fbc929861e02212",
+      "change": "package imports; three asset lookup roots only; numerical AST retained"
+    },
+    {
+      "module": "rsl_rl/__init__.py",
+      "source_group": "TRON1 RSL-RL 2.0.2",
+      "original_sha256": "97fce226458108945abedd336460c435c07da8e12e1a67860a48c2e8a4f2279e",
+      "packaged_sha256": "7fff20742d59fd7e7430600b12814bd3f1b63f4c42f093a3f2199435de105976",
+      "change": "absolute import prefix; LF line endings and trailing whitespace only"
+    },
+    {
+      "module": "rsl_rl/algorithm/__init__.py",
+      "source_group": "TRON1 RSL-RL 2.0.2",
+      "original_sha256": "1697dc579050c09e95325062dd18cf6a224d3be627c8126b693f46a7b0facc2a",
+      "packaged_sha256": "64866743b5e0b43e7a57cfeaeac608ad8aaef29c433a5a0fd0f4a4e5d20f851e",
+      "change": "absolute import prefix; LF line endings and trailing whitespace only"
+    },
+    {
+      "module": "rsl_rl/algorithm/ppo.py",
+      "source_group": "TRON1 RSL-RL 2.0.2",
+      "original_sha256": "e933beebebdca9b24fb44a043f9f3abb529051581fb661efe7fbce8f0d944125",
+      "packaged_sha256": "794783a332c181c28b7ac50dfc0d3432fd3bb47c56ee2bd05fe449f16b14818c",
+      "change": "absolute import prefix; LF line endings and trailing whitespace only"
+    },
+    {
+      "module": "rsl_rl/modules/__init__.py",
+      "source_group": "TRON1 RSL-RL 2.0.2",
+      "original_sha256": "d466f0f1cc39670d5e3a42d2286e72eb76af6bb0409b3db306c5ab33163a8921",
+      "packaged_sha256": "ecd0777ddf971d10e3f8c125b3556409b059bae1a416b79c1ec9abcf793c5ca2",
+      "change": "absolute import prefix; LF line endings and trailing whitespace only"
+    },
+    {
+      "module": "rsl_rl/modules/actor_critic.py",
+      "source_group": "TRON1 RSL-RL 2.0.2",
+      "original_sha256": "bf768f1c3f422462892d102c6aa297783cd4fc46ec768abbb5700b86863a71f9",
+      "packaged_sha256": "5192d9a1cb31c48ec47806621d12e532cbea09b0a67a40d4389c02a532b084eb",
+      "change": "absolute import prefix; LF line endings and trailing whitespace only"
+    },
+    {
+      "module": "rsl_rl/modules/mlp_encoder.py",
+      "source_group": "TRON1 RSL-RL 2.0.2",
+      "original_sha256": "ac7512e2e97682ea150a2489bf2556e96c70018d82579d452564f3857a47873f",
+      "packaged_sha256": "0f95c124e1e9edccc08fcda8e5ba57a5c4758ff4265bd22a90dc3076cb17131d",
+      "change": "absolute import prefix; LF line endings and trailing whitespace only"
+    },
+    {
+      "module": "rsl_rl/storage/__init__.py",
+      "source_group": "TRON1 RSL-RL 2.0.2",
+      "original_sha256": "b4644c76c4bbf2a655909d45c7e615b8963d3ed8f4a8a6e8be9e955bd0d12feb",
+      "packaged_sha256": "a979b1212cf134adbb03262479d399715f178f1d2c1d5d886db409441b28d47b",
+      "change": "absolute import prefix; LF line endings and trailing whitespace only"
+    },
+    {
+      "module": "rsl_rl/storage/rollout_storage.py",
+      "source_group": "TRON1 RSL-RL 2.0.2",
+      "original_sha256": "614acc49ca92f263ee6091ca5db35e8f0ab9a3cac4f377e47850ab324b7d1bea",
+      "packaged_sha256": "54ce40d457d4ebd6347d1979b7ad88931a3ac0f2ae7dc46429f687b40db9450a",
+      "change": "absolute import prefix; LF line endings and trailing whitespace only"
+    },
+    {
+      "module": "thermal_policy",
+      "source_group": "watch_standing_gpu1_review90m_v1.py",
+      "original_sha256": "113ed13d7fa01b328191f28d2c895a799b3e844dcb0252a887e4d3fd74d2513f",
+      "packaged_sha256": "734e443007d4af624fdc9cc4d36ef710324822cb2b87899d1b0d902ae116ea10",
+      "change": "number, parse_gpu and Policy computational AST unchanged; supervisor supplies GPU UUID"
+    }
+  ],
+  "assets": {
+    "dogleg_lab.usda": "fdf4c05cb5acbcf547aa8eee458707ba41efd643ea038e077d0341273087b06c",
+    "physical_payload.json": "a982791ce998da6d9472d48ff18f179c90288743e686cc6115be6c5fae2c47df",
+    "reset_atlas.json": "c5a58dcbad1792727cb64e5d9c9733fc53e487b51be9d32975bdd96918693af5",
+    "guard17.pt": "65bf85f0fc9fb5ee9bcdff97cda9e96527c71c6c27c974c334edf602878c974f"
+  },
+  "upstream": "https://github.com/limxdynamics/tron1-rl-isaaclab",
+  "upstream_revision": "307145edfe95f49c45fd9ccd090ab950e8884b33",
+  "excluded": "obsolete runners, historical probes, remote queue/authentication helpers, old outputs, installed environments",
+  "simulator_validation": "original Guard17 only; portable packaging not yet run on a GPU"
+}

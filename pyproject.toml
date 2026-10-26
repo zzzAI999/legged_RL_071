@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dogleg-rl"
+version = "0.1.0"
+description = "Closed-chain wheeled-legged standing with the current Guard17 reward and protected control path"
+readme = "README.md"
+requires-python = ">=3.10,<3.11"
+dependencies = ["numpy==1.26.4", "torch==2.5.1"]
+
+[project.scripts]
+dogleg-rl = "dogleg_rl.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+dogleg_rl = ["assets/*.json", "assets/*.usda"]
