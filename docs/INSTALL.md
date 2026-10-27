@@ -2,6 +2,8 @@
 
 推荐原生 Ubuntu 22.04。先按根 README 检查驱动、安装系统依赖并克隆本仓库。下面从仓库根目录开始，逐条执行；不要激活原工程的环境。
 
+**RTX 5080／RTX 50 系列请先看 [README 的专门安装说明](../README.md#rtx-5080)。** 本页命令复现 Python3.10／CUDA11.8 的原平台。5080需要新架构基础环境，且本项目在新版本上的完整迁移尚未验证。
+
 ```bash
 python3.10 -m venv .venv
 source .venv/bin/activate

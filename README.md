@@ -2,6 +2,7 @@
 
 **运行平台：原生 Linux，推荐 Ubuntu 22.04 + NVIDIA GPU。** 以下命令均在这台 Linux 机器的终端执行。Windows 本机可阅读源码、运行 CPU 检查；本仓库的 GPU 监督程序使用 Linux `/proc` 和信号，不能直接在 Windows PowerShell 中运行仿真。不要把 Windows 路径直接粘贴到 Linux。
 
+**RTX 5080／RTX 50 系列请先阅读 [RTX 5080 安装说明](#rtx-5080)。** 默认安装脚本复现旧训练平台的 CUDA 11.8 环境；5080 使用 Blackwell 架构，需要单独准备较新的基础环境。本项目到该新环境的迁移尚未完成验证。
 
 ## 1. 准备机器
 
@@ -45,7 +46,7 @@ cd dogleg-rl
 
 ## 3. 从零安装环境
 
-固定的兼容组合如下。**不要直接升级到 Isaac Sim 5.x、Isaac Lab 2.1+ 或最新版 RSL-RL。**
+原训练平台固定的兼容组合如下。**复现该平台时不要直接升级到 Isaac Sim 5.x、Isaac Lab 2.1+ 或最新版 RSL-RL。** RTX 5080 的独立基础环境说明在本节后半部分。
 
 | 组件 | 版本／来源 |
 | --- | --- |
@@ -65,7 +66,84 @@ source .venv/bin/activate
 
 首次下载 Isaac Sim 体积较大，需要能访问 PyPI、NVIDIA 软件源、PyTorch 软件源和 GitHub。完整展开的手动安装命令见 [INSTALL.md](docs/INSTALL.md)。NVIDIA EULA 会在第一次启动时请求确认，请阅读后自行选择；安装器不会替你接受许可。
 
+### RTX 5080
+
+RTX 5080 是 **Blackwell、计算能力 12.0（`sm_120`）**。PyTorch 2.7 官方开始提供 Blackwell 支持及 CUDA 12.8 wheel；因此本仓库默认的 `torch 2.5.1+cu118` 安装路径不适合作为 5080 的直接安装方案。只更新显卡驱动或另外安装 CUDA Toolkit，也不会把现有 torch wheel 变成支持新架构的构建。
+
+以下是一组来自 **Isaac Lab v2.2.0 官方安装文档**的基础环境组合，用于准备并验证 5080 上的 PyTorch／Isaac 环境：
+
+| 组件 | 5080 独立基础环境 |
+| --- | --- |
+| 操作系统 | 原生 Ubuntu 22.04／24.04，Linux x86-64 |
+| NVIDIA 驱动 | 支持 RTX 50 系列、满足所选 Isaac Sim 版本要求的驱动；按 Ubuntu 推荐及 NVIDIA 兼容表选择 |
+| Python | 3.11 |
+| PyTorch / torchvision | 2.7.0+cu128 / 0.22.0+cu128 |
+| Isaac Sim / Isaac Lab | 5.0.0 / v2.2.0 |
+
+**这些命令安装的是新显卡的基础环境，当前仓库还没有把该组合声明为可直接运行 dogleg 训练的受支持配置。** `pyproject.toml`、`constraints.txt` 和 `dogleg-rl check` 目前固定 Python3.10／torch2.5.1／IsaacSim4.5。完整运行项目还需要适配依赖声明与版本检查、确认 Isaac Lab API、完成本项目 smoke 和物理对照；不能把“CUDA 张量能算”当作迁移通过。
+
+先按第1节安装系统依赖并确认 `nvidia-smi` 能识别 RTX 5080。`nvidia-smi` 显示的 `CUDA Version` 是驱动可支持的 CUDA 上限，PyTorch 实际使用的版本查看 `torch.version.cuda`。
+
+在已克隆的仓库根目录执行，单独使用 `dogleg5080` 环境，保留原 `.venv`。若机器尚无 Conda，可先安装 Miniforge；已有 Conda／Miniforge 的机器跳过下面这段：
+
+```bash
+sudo apt install -y curl
+curl -fL https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh \
+  -o /tmp/Miniforge3-Linux-x86_64.sh
+bash /tmp/Miniforge3-Linux-x86_64.sh -b -p "$HOME/miniforge3"
+source "$HOME/miniforge3/etc/profile.d/conda.sh"
+```
+
+创建新环境，安装支持 Blackwell 的 PyTorch 和 Isaac：
+
+```bash
+conda create -n dogleg5080 python=3.11 -y
+conda activate dogleg5080
+python -m pip install --upgrade pip setuptools wheel
+python -m pip install torch==2.7.0 torchvision==0.22.0 \
+  --index-url https://download.pytorch.org/whl/cu128
+python -m pip install 'isaacsim[all,extscache]==5.0.0' \
+  --extra-index-url https://pypi.nvidia.com
+
+mkdir -p _deps
+git clone --depth 1 --branch v2.2.0 https://github.com/isaac-sim/IsaacLab.git _deps/IsaacLab5080
+python -m pip install -e _deps/IsaacLab5080/source/isaaclab
+python -m pip check
+```
+
+此流程使用新的 `IsaacLab5080` 目录；不调用旧环境安装脚本，也不传入旧 `constraints.txt`。当前阶段到官方基础环境验证为止，不执行本项目的 `pip install -e .` 或 `dogleg-rl train`。
+
+验证 PyTorch 确实能在5080执行 GPU 运算。单显卡使用 `cuda:0`；多显卡时选择对应5080的编号：
+
+```bash
+python - <<'PY'
+import torch
+device = torch.device('cuda:0')
+assert torch.cuda.is_available(), 'CUDA unavailable: check driver and torch wheel'
+print('torch:', torch.__version__, 'CUDA runtime:', torch.version.cuda)
+print('GPU:', torch.cuda.get_device_name(device))
+print('capability:', torch.cuda.get_device_capability(device))
+x = torch.randn(1024, 1024, device=device)
+y = x @ x
+torch.cuda.synchronize(device)
+assert torch.isfinite(y).all().item()
+print('CUDA matrix multiplication: PASS')
+PY
+```
+
+如果选择的确实是5080，计算能力应为 `(12, 0)`。然后验证官方空场景；首次启动时自行阅读并确认 NVIDIA EULA：
+
+```bash
+python _deps/IsaacLab5080/scripts/tutorials/00_sim/create_empty.py --headless --device cuda:0
+```
+
+确认场景正常启动后按 `Ctrl+C` 退出。上述两项只确认基础软件环境，未验证本项目的控制、闭链、奖励或训练结果。5080的16GiB显存也不保证新版本下4096环境一定能运行，仍需实际测量。
+
+参考：[NVIDIA GPU计算能力表](https://developer.nvidia.com/cuda-gpus)、[PyTorch2.7的Blackwell支持](https://pytorch.org/blog/pytorch-2-7/)、[Isaac Lab v2.2.0官方安装流程](https://isaac-sim.github.io/IsaacLab/v2.2.0/source/setup/installation/pip_installation.html)。该节提供版本化的基础环境准备路径，尚未在5080硬件上由本项目实测。
+
 ## 4. 先检查，再启动
+
+以下项目命令对应已验证来源的原训练环境，不接续上面的5080基础环境准备流程。
 
 在仓库根目录、已激活 `.venv` 的终端执行：
 
