@@ -1,7 +1,5 @@
 # Dogleg 轮腿机器人强化学习
 
-这是当前使用的 **Guard17 站立／恢复策略**的独立项目：包含实际训练使用的机器人 USD、物理参数、合法复位姿态、当前奖励函数、受保护的控制路径、PPO 和最新完整检查点。目标是先站稳，再逐级扩大初始姿态和随机扰动范围。
-
 **运行平台：原生 Linux，推荐 Ubuntu 22.04 + NVIDIA GPU。** 以下命令均在这台 Linux 机器的终端执行。Windows 本机可阅读源码、运行 CPU 检查；本仓库的 GPU 监督程序使用 Linux `/proc` 和信号，不能直接在 Windows PowerShell 中运行仿真。不要把 Windows 路径直接粘贴到 Linux。
 
 
