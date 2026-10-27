@@ -189,11 +189,47 @@ dogleg-rl evaluate --gpu 0 --checkpoint checkpoints/guard17.pt
 dogleg-rl train --gpu 0 --checkpoint checkpoints/guard17.pt --updates 100 --minutes 60
 ```
 
+**这条命令会启动 Isaac Sim，但默认使用无窗口模式（headless），不会显示训练画面。** Isaac Sim 负责物理仿真，PPO同时收集数据并更新策略。
+
 如果明确要从随机策略开始，而非继续当前模型：
 
 ```bash
 dogleg-rl train --gpu 0 --fresh --updates 100 --minutes 60
 ```
+
+### 可视化训练
+
+在训练命令末尾增加 `--gui`，会打开 Isaac Sim 窗口，显示训练中的仿真场景。先用32个环境确认窗口和渲染正常；这个 smoke 测试不进行优化：
+
+```bash
+dogleg-rl smoke --gpu 0 --gui
+```
+
+看到 `SMOKE_COMPLETE` 并正常退出后，从当前检查点开始可视化训练：
+
+```bash
+dogleg-rl train \
+  --gpu 0 \
+  --checkpoint checkpoints/guard17.pt \
+  --updates 100 \
+  --minutes 60 \
+  --gui
+```
+
+明确从随机策略开始时，同样可以使用可视化：
+
+```bash
+dogleg-rl train --gpu 0 --fresh --updates 100 --minutes 60 --gui
+```
+
+运行条件与资源要求：
+
+- 需要可用的 Linux 桌面或远程桌面会话。纯 SSH 终端不会自动把 Isaac Sim 画面传到本机；没有显示服务时使用默认 headless。
+- 单显卡通常用 `--gpu 0`；原双显卡服务器使用 GPU1 时把命令改为 `--gpu 1`。所选GPU仍需通过空闲检查，已有桌面或其它进程占用同一GPU时，监督程序也会拒绝启动；`--gui` 不放宽这个检查。
+- 正式训练仍为4096并行环境，开启窗口会增加渲染负担和显存占用。先完成32环境的GUI smoke，再确认正式规模的资源是否足够；GUI不会自动降低环境数量，也不会自动录制视频。
+- RTX 5080 仍需先处理前面说明的版本迁移与运行验证。增加 `--gui` 只控制窗口显示，不解决 Python／PyTorch／Isaac 的版本兼容问题。
+
+### 训练预算、输出与停止
 
 保持 4096 并行环境、每环境 rollout 64 个决策、PPO 4 epochs × 4 minibatches。每更新为 262144 个决策和 16 次 Adam step。达到本段 local100 时才执行一次计划内课程评估；少于 100 更新的早停段不会补跑评估。每段完成后停止，不自动接下一段。
 
