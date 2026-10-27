@@ -37,10 +37,10 @@ sudo apt install -y git python3.10 python3.10-venv python3-pip build-essential c
 
 ## 2. 获取项目
 
-在本仓库页面点击绿色 `Code` 按钮，使用显示的 HTTPS 地址：
+克隆本仓库并进入目录：
 
 ```bash
-git clone <本仓库的HTTPS地址> dogleg-rl
+git clone https://github.com/zzzAI999/legged_RL_071.git dogleg-rl
 cd dogleg-rl
 ```
 
