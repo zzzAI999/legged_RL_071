@@ -4,7 +4,6 @@
 
 **运行平台：原生 Linux，推荐 Ubuntu 22.04 + NVIDIA GPU。** 以下命令均在这台 Linux 机器的终端执行。Windows 本机可阅读源码、运行 CPU 检查；本仓库的 GPU 监督程序使用 Linux `/proc` 和信号，不能直接在 Windows PowerShell 中运行仿真。不要把 Windows 路径直接粘贴到 Linux。
 
-当前已记录的短评估为 **Soft 251/256、Protected 256/256，35.02 秒，课程 0**。这还不是课程 4 的 120 秒最终资格，也不是实机部署通过。新机器、更换 GPU 或重新评估不保证逐样本得到相同结果。
 
 ## 1. 准备机器
 
