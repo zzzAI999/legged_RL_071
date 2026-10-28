@@ -31,6 +31,8 @@ def parser():
     result.add_argument('--out', type=Path, default=None, help='New output directory; existing paths are refused')
     result.add_argument('--checkpoint', type=Path, default=DEFAULT_CHECKPOINT)
     result.add_argument('--fresh', action='store_true', help='Explicitly train a new policy instead of restoring a checkpoint')
+    result.add_argument('--num-envs', type=int, default=None, help='Parallel environments; defaults to 32 for smoke, 4096 otherwise')
+    result.add_argument('--evaluation-update', type=int, default=100, help='One scheduled evaluation at this local update, 1..100')
     result.add_argument('--updates', type=int, default=100, help='Maximum new PPO updates, 1..100')
     result.add_argument('--minutes', type=float, default=60., help='Maximum post-reset training minutes, at most 60')
     result.add_argument('--seconds', type=float, default=35.02, help='Evaluation duration; 35.02 by default')
@@ -41,6 +43,13 @@ def parser():
 
 
 def validate(args):
+    if args.num_envs is None:
+        args.num_envs = 32 if args.mode == 'smoke' else 4096
+    unit = 32 if args.mode == 'smoke' else 512
+    if not unit <= args.num_envs <= 32768 or args.num_envs % unit:
+        raise ValueError('Environment count must be a multiple of %d, up to 32768' % unit)
+    if not 1 <= args.evaluation_update <= 100:
+        raise ValueError('Scheduled evaluation update must be in 1..100')
     if args.gpu < 0 or not 1 <= args.updates <= 100 or not 0 < args.minutes <= 60:
         raise ValueError('Require GPU index >=0, updates 1..100, and minutes in (0,60]')
     if not 35.02 <= args.seconds <= 120. or abs(args.seconds/.02 - round(args.seconds/.02)) > 1e-6:

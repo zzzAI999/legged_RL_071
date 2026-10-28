@@ -1,0 +1,481 @@
+{
+  "source_sha256": "3dcd19b2b4631ebf716694a42bd11ccaad460d4564d9b53a9ba95eda95f137e8",
+  "source_urdf": "E:\\RL\\dogleg_demo\\urdf\u6587\u4ef6\u6700\u7ec8\u7a3f2\\dogleg_demo_finished\\urdf\\dogleg_demo_finished.urdf",
+  "tree_urdf": "E:\\RL\\dogleg_demo\\urdf\u6587\u4ef6\u6700\u7ec8\u7a3f2\\dogleg_demo_finished\\urdf\\dogleg_demo_finished_motor_belt_tree.urdf",
+  "isaac_urdf": "E:\\RL\\dogleg_demo\\urdf\u6587\u4ef6\u6700\u7ec8\u7a3f2\\dogleg_demo_finished\\urdf\\dogleg_demo_finished_motor_belt_closed_isaac.urdf",
+  "loops": [
+    {
+      "name": "left_front5_rear3_closure",
+      "body0": "left_front5_link",
+      "body1": "left_rear3_link",
+      "world_reference_anchor_m": [
+        -0.024892539983770286,
+        -0.029259816494852497,
+        0.11215010538074395
+      ],
+      "previous_name": "left_front4_rear2_closure",
+      "matched_geometry": {
+        "feature0": {
+          "center_xy_m": [
+            -0.004233008925543231,
+            -0.05985050571556131
+          ],
+          "radius_m": 0.004000000055845243,
+          "z_min_m": 0.0020000000949949026,
+          "z_max_m": 0.004399999976158142,
+          "max_circle_fit_error_m": 5.228071616250607e-09,
+          "vertex_count": 36,
+          "root_axis_point_m": [
+            -0.024892525469542546,
+            -0.02925815681495352,
+            0.11600029560081977
+          ]
+        },
+        "feature1": {
+          "center_xy_m": [
+            0.03410333978929253,
+            0.011530821380020616
+          ],
+          "radius_m": 0.003999999217893144,
+          "z_min_m": 0.0007000000914558768,
+          "z_max_m": 0.00570000009611249,
+          "max_circle_fit_error_m": 3.4496147093346363e-09,
+          "vertex_count": 12,
+          "root_axis_point_m": [
+            -0.024892554498516132,
+            -0.029261429157725203,
+            0.11469991528985612
+          ]
+        },
+        "axis_separation_m": 3.262918778197198e-06,
+        "old_root_xy_distance_m": 0.06851567817823012
+      },
+      "anchor_source": "Unique current-STL coaxial pin for the previously confirmed link pair; changed export pose, coordinates remeasured; not physical calibration",
+      "local_pos0_m": [
+        -0.004232994398915009,
+        -0.059852137110276836,
+        0.003850190232164619
+      ],
+      "local_pos1_m": [
+        0.0341033252626994,
+        0.011532452774736145,
+        0.0025498098971960806
+      ]
+    },
+    {
+      "name": "right_front5_rear3_closure",
+      "body0": "right_front5_link",
+      "body1": "right_rear3_link",
+      "world_reference_anchor_m": [
+        -0.024892030654893826,
+        -0.029259609245091744,
+        -0.11214938519051204
+      ],
+      "previous_name": "right_front4_rear2_closure",
+      "matched_geometry": {
+        "feature0": {
+          "center_xy_m": [
+            0.004233008925544719,
+            -0.05985050571556122
+          ],
+          "radius_m": 0.004000000055845513,
+          "z_min_m": 0.0020000000949949026,
+          "z_max_m": 0.004399999976158142,
+          "max_circle_fit_error_m": 5.228072480142898e-09,
+          "vertex_count": 36,
+          "root_axis_point_m": [
+            -0.024892396467062015,
+            -0.02925797416027432,
+            -0.11599957539700752
+          ]
+        },
+        "feature1": {
+          "center_xy_m": [
+            -0.03410333978929255,
+            0.011530821380020585
+          ],
+          "radius_m": 0.003999999217893225,
+          "z_min_m": 0.000699999975040555,
+          "z_max_m": 0.00570000009611249,
+          "max_circle_fit_error_m": 3.4496146000470573e-09,
+          "vertex_count": 12,
+          "root_axis_point_m": [
+            -0.024891664842380225,
+            -0.029261244329909165,
+            -0.11469919505516958
+          ]
+        },
+        "axis_separation_m": 3.351012416919712e-06,
+        "old_root_xy_distance_m": 0.06851545732785254
+      },
+      "anchor_source": "Unique current-STL coaxial pin for the previously confirmed link pair; changed export pose, coordinates remeasured; not physical calibration",
+      "local_pos0_m": [
+        0.004233374737920702,
+        -0.05985214080037864,
+        0.003850190206495457
+      ],
+      "local_pos1_m": [
+        -0.03410370560166854,
+        0.011532456464838005,
+        0.0025498098646575644
+      ]
+    },
+    {
+      "name": "left_front4_rear2_closure",
+      "body0": "left_front4_link",
+      "body1": "left_rear2_link",
+      "world_reference_anchor_m": [
+        0.0038900173254674464,
+        0.01897488630787169,
+        0.10999997093880096
+      ],
+      "previous_name": "left_front3_rear1_closure",
+      "matched_geometry": {
+        "feature0": {
+          "center_xy_m": [
+            0.05971223378544114,
+            -0.0058693298507242215
+          ],
+          "radius_m": 0.005999999905460353,
+          "z_min_m": 0.004000000189989805,
+          "z_max_m": 0.008999999612569809,
+          "max_circle_fit_error_m": 4.6597377796608885e-09,
+          "vertex_count": 15,
+          "root_axis_point_m": [
+            0.0038898774809395034,
+            0.018974830497222383,
+            0.11599994126461625
+          ]
+        },
+        "feature1": {
+          "center_xy_m": [
+            0.004433987169293777,
+            -0.04980301012981339
+          ],
+          "radius_m": 0.005999999516182748,
+          "z_min_m": 0.013000000268220901,
+          "z_max_m": 0.01600000075995922,
+          "max_circle_fit_error_m": 5.941219159873168e-09,
+          "vertex_count": 36,
+          "root_axis_point_m": [
+            0.0038901571692937773,
+            0.018974989870186615,
+            0.096
+          ]
+        },
+        "axis_separation_m": 4.147824843794378e-07,
+        "old_root_xy_distance_m": 0.03391387721995215
+      },
+      "anchor_source": "Unique current-STL coaxial pin for the previously confirmed link pair; changed export pose, coordinates remeasured; not physical calibration",
+      "local_pos0_m": [
+        0.05971209394082701,
+        -0.005869229962859032,
+        0.005999970325243399
+      ],
+      "local_pos1_m": [
+        0.004433847325467447,
+        -0.049803113692128316,
+        0.013999970938800954
+      ]
+    },
+    {
+      "name": "right_front4_rear2_closure",
+      "body0": "right_front4_link",
+      "body1": "right_rear2_link",
+      "world_reference_anchor_m": [
+        0.003890443817852837,
+        0.01897486188507267,
+        -0.10999960505655537
+      ],
+      "previous_name": "right_front3_rear1_closure",
+      "matched_geometry": {
+        "feature0": {
+          "center_xy_m": [
+            -0.059712230014635395,
+            -0.005869323708952916
+          ],
+          "radius_m": 0.005999999894067087,
+          "z_min_m": 0.0020000000949949026,
+          "z_max_m": 0.00699999975040555,
+          "max_circle_fit_error_m": 6.694794952785688e-09,
+          "vertex_count": 15,
+          "root_axis_point_m": [
+            0.0038903645926499225,
+            0.018974807846333992,
+            -0.11399957539545412
+          ]
+        },
+        "feature1": {
+          "center_xy_m": [
+            -0.004433987169293773,
+            -0.049803010129813335
+          ],
+          "radius_m": 0.005999999516182893,
+          "z_min_m": 0.013000000268220901,
+          "z_max_m": 0.01600000075995922,
+          "max_circle_fit_error_m": 5.941218963849415e-09,
+          "vertex_count": 36,
+          "root_axis_point_m": [
+            0.0038905230425160518,
+            0.01897502244676312,
+            -0.09599963412665806
+          ]
+        },
+        "axis_separation_m": 2.667583402892886e-07,
+        "old_root_xy_distance_m": 0.03391408482324808
+      },
+      "anchor_source": "Unique current-STL coaxial pin for the previously confirmed link pair; changed export pose, coordinates remeasured; not physical calibration",
+      "local_pos0_m": [
+        -0.05971215078921661,
+        -0.0058692696702142355,
+        0.00399997033889874
+      ],
+      "local_pos1_m": [
+        -0.004433907943451008,
+        -0.049803067841392434,
+        0.013999970930699069
+      ]
+    }
+  ],
+  "belts": [
+    {
+      "name": "left_front_timing_belt",
+      "motor_joint": "left_front1_joint",
+      "output_joint": "left_front2_joint",
+      "motor_body": "left_front1_wheel",
+      "output_body": "left_front2_link",
+      "motor_teeth": 35,
+      "output_teeth": 35,
+      "multiplier": -1.0,
+      "offset_rad": 0,
+      "axis_dot_product": -1.0,
+      "tooth_plane_gap_m": 2.141296015545137e-07,
+      "display_centers_cad_m": [
+        [
+          -0.06031500000049922,
+          0.039630067954294405,
+          0.0792499999997504
+        ],
+        [
+          -0.0005438299998245983,
+          0.06877797612416683,
+          0.07925000000008771
+        ]
+      ],
+      "display_radius_m": 0.0272951,
+      "assumption": "Ideal non-crossed no-slip belt; real routing, compliance and backlash not calibrated",
+      "ratio_source": "Current STL tooth profiles: 35/35; no arbitrary reduction",
+      "test_max_torque_Nm": 0.2
+    },
+    {
+      "name": "left_rear_timing_belt",
+      "motor_joint": "left_rear1_joint",
+      "output_joint": "left_rear2_joint",
+      "motor_body": "left_rear1_wheel",
+      "output_body": "left_rear2_link",
+      "motor_teeth": 35,
+      "output_teeth": 35,
+      "multiplier": 1.0,
+      "offset_rad": 0,
+      "axis_dot_product": 1.0,
+      "tooth_plane_gap_m": 0.0,
+      "display_centers_cad_m": [
+        [
+          0.059681,
+          0.040579,
+          0.09275
+        ],
+        [
+          -0.00054383,
+          0.068778,
+          0.09275
+        ]
+      ],
+      "display_radius_m": 0.0272951,
+      "assumption": "Ideal non-crossed no-slip belt; real routing, compliance and backlash not calibrated",
+      "ratio_source": "Current STL tooth profiles: 35/35; no arbitrary reduction",
+      "test_max_torque_Nm": 0.2
+    },
+    {
+      "name": "right_front_timing_belt",
+      "motor_joint": "right_front1_joint",
+      "output_joint": "right_front2_joint",
+      "motor_body": "right_front1_wheel",
+      "output_body": "right_front2_link",
+      "motor_teeth": 35,
+      "output_teeth": 35,
+      "multiplier": 1.0,
+      "offset_rad": 0,
+      "axis_dot_product": 1.0,
+      "tooth_plane_gap_m": 0.0,
+      "display_centers_cad_m": [
+        [
+          -0.060315,
+          0.03963,
+          -0.07925
+        ],
+        [
+          -0.00054383,
+          0.068778,
+          -0.07925
+        ]
+      ],
+      "display_radius_m": 0.0272951,
+      "assumption": "Ideal non-crossed no-slip belt; real routing, compliance and backlash not calibrated",
+      "ratio_source": "Current STL tooth profiles: 35/35; no arbitrary reduction",
+      "test_max_torque_Nm": 0.2
+    },
+    {
+      "name": "right_rear_timing_belt",
+      "motor_joint": "right_rear1_joint",
+      "output_joint": "right_rear2_joint",
+      "motor_body": "right_rear1_wheel",
+      "output_body": "right_rear2_link",
+      "motor_teeth": 35,
+      "output_teeth": 35,
+      "multiplier": -1.0,
+      "offset_rad": 0,
+      "axis_dot_product": -1.0,
+      "tooth_plane_gap_m": 2.0716537333802072e-07,
+      "display_centers_cad_m": [
+        [
+          0.05968100000122781,
+          0.0405788328691678,
+          -0.0927499999993861
+        ],
+        [
+          -0.0005438300001754017,
+          0.06877802387583318,
+          -0.0927500000000877
+        ]
+      ],
+      "display_radius_m": 0.0272951,
+      "assumption": "Ideal non-crossed no-slip belt; real routing, compliance and backlash not calibrated",
+      "ratio_source": "Current STL tooth profiles: 35/35; no arbitrary reduction",
+      "test_max_torque_Nm": 0.2
+    }
+  ],
+  "removed_export_mimics": [
+    {
+      "joint": "left_rear2_joint",
+      "original_mimic": {
+        "joint": "left_rear1_joint",
+        "multiplier": "1",
+        "offset": "0"
+      }
+    },
+    {
+      "joint": "left_rear3_joint",
+      "original_mimic": {
+        "joint": "left_rear2_joint",
+        "multiplier": "1",
+        "offset": "0"
+      }
+    },
+    {
+      "joint": "left_rear4_joint",
+      "original_mimic": {
+        "joint": "left_rear3_joint",
+        "multiplier": "1",
+        "offset": "0"
+      }
+    },
+    {
+      "joint": "left_front2_joint",
+      "original_mimic": {
+        "joint": "left_front1_joint",
+        "multiplier": "1",
+        "offset": "0"
+      }
+    },
+    {
+      "joint": "left_front3_joint",
+      "original_mimic": {
+        "joint": "left_front2_joint",
+        "multiplier": "1",
+        "offset": "0"
+      }
+    },
+    {
+      "joint": "left_front4_joint",
+      "original_mimic": {
+        "joint": "left_front3_joint",
+        "multiplier": "1",
+        "offset": "0"
+      }
+    },
+    {
+      "joint": "left_front5_joint",
+      "original_mimic": {
+        "joint": "left_front4_joint",
+        "multiplier": "1",
+        "offset": "0"
+      }
+    },
+    {
+      "joint": "right_rear2_joint",
+      "original_mimic": {
+        "joint": "right_rear1_joint",
+        "multiplier": "1",
+        "offset": "0"
+      }
+    },
+    {
+      "joint": "right_rear3_joint",
+      "original_mimic": {
+        "joint": "right_rear2_joint",
+        "multiplier": "1",
+        "offset": "0"
+      }
+    },
+    {
+      "joint": "right_rear4_joint",
+      "original_mimic": {
+        "joint": "left_rear3_joint",
+        "multiplier": "1",
+        "offset": "0"
+      }
+    },
+    {
+      "joint": "right_front2_joint",
+      "original_mimic": {
+        "joint": "right_front1_joint",
+        "multiplier": "1",
+        "offset": "0"
+      }
+    },
+    {
+      "joint": "right_front3_joint",
+      "original_mimic": {
+        "joint": "right_front2_joint",
+        "multiplier": "1",
+        "offset": "0"
+      }
+    },
+    {
+      "joint": "right_front4_joint",
+      "original_mimic": {
+        "joint": "right_front3_joint",
+        "multiplier": "1",
+        "offset": "0"
+      }
+    },
+    {
+      "joint": "right_front5_joint",
+      "original_mimic": {
+        "joint": "right_front4_joint",
+        "multiplier": "1",
+        "offset": "0"
+      }
+    }
+  ],
+  "cad_up_axis": "Y",
+  "fixed_base_test": true,
+  "gravity_m_s2": 0,
+  "self_collision_enabled": false,
+  "hardware_accessed": false,
+  "original_preserved": true,
+  "test_effort_cap_Nm": 0.2,
+  "hardware_motor_ratings_verified": false,
+  "ready_for_rl_or_hardware": false
+}

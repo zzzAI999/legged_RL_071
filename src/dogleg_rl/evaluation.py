@@ -4,7 +4,7 @@ from pathlib import Path
 import time
 
 
-def evaluate(env, actor, out, seed, seconds=35.02):
+def evaluate(env, actor, out, seed, seconds=35.02, *, observer=None, model_checkpoint=None, cumulative_updates=None):
     import torch
     from .core.standing_math_guard import stable_criteria, sustained_pass
     from .core.standing_training_state import model_identity
@@ -47,10 +47,15 @@ def evaluate(env, actor, out, seed, seconds=35.02):
     identity = model_identity(actor)
     was_training = actor.training
     actor.eval()
+    if observer is not None:
+        observer.begin('evaluation', actor, cumulative_updates, model_checkpoint,
+            evaluation=dict(seed=seed, seconds=seconds, level=env.level, cases=512, per_arm=256))
     started = time.monotonic()
     with torch.no_grad():
         for step in range(steps):
             action = actor.act_inference(obs['policy']).clamp(-1., 1.)
+            if observer is not None:
+                observer.accepted(env, obs['policy'], action, action)
             obs, _, _, timeout, _ = env.step(action)
             assert not timeout.any(), 'Evaluation reset is prohibited'
             assert torch.isfinite(obs['policy']).all() and torch.isfinite(env.robot.data.joint_vel).all()
@@ -75,6 +80,8 @@ def evaluate(env, actor, out, seed, seconds=35.02):
     result['both_arms_pass'] = result['soft']['passed'] >= 244 and result['protected']['passed'] >= 244
     result['final_qualified'] = env.level == 4 and seconds >= 120 and result['both_arms_pass']
     (out/'evaluation.json').write_text(json.dumps(result, indent=2), encoding='utf-8')
+    if observer is not None:
+        observer.evaluation_labels(result)
     env.cfg.evaluation, env.cfg.profile, env.training_mode, env.level, gates, env.cfg.episode_length_s = original
     env.hardware_gate_mask.copy_(gates)
     actor.train(was_training)

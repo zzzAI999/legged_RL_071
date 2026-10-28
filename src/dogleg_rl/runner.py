@@ -15,6 +15,7 @@ def run(args):
     app = SimulationApp(dict(headless=not args.gui, active_gpu=args.gpu, physics_gpu=args.gpu,
                              multi_gpu=False, create_new_stage=False))
     env = None
+    observer = None
     out = args.out
     stop_requested = False
 
@@ -29,7 +30,8 @@ def run(args):
         return stop_requested or (out/'STOP_AFTER_UPDATE').exists()
 
     def status(phase, **values):
-        record = dict(phase=phase, at=time.time(), **values)
+        record = dict(values)
+        record.update(phase=phase, at=time.time())
         temporary = out/'receipt.tmp'
         temporary.write_text(json.dumps(record, indent=2), encoding='utf-8')
         temporary.replace(out/'receipt.json')
@@ -54,12 +56,13 @@ def run(args):
         from .core.standing_guard_protocol import GUARD_V2, RETURN_ACCOUNTING_V2
         from .core.recovery_contract_v4 import contract_v4
         from .evaluation import evaluate
+        from .observation29_recording_v1 import Observation29Recorder
         random.seed(125021)
         np.random.seed(125021)
         torch.manual_seed(125021)
         cfg = StandingCfg()
         cfg.sim.device = 'cuda:' + str(args.gpu)
-        cfg.scene.num_envs = 32 if args.mode == 'smoke' else 4096
+        cfg.scene.num_envs = args.num_envs
         cfg.scene.env_spacing = 2.
         cfg.seed = 125021
         cfg.profile = 'nominal'
@@ -117,8 +120,15 @@ def run(args):
             source_checkpoint_sha256=hashlib.sha256(args.checkpoint.read_bytes()).hexdigest() if checkpoint else None,
             source_updates=source_updates, source_decisions=source_transitions,
             maximum_updates=args.updates, maximum_minutes=args.minutes,
+            scheduled_local_evaluation_update=args.evaluation_update,
+            source_training_envs=(checkpoint.get('control_contract', {}).get('training_envs') if checkpoint else None),
+            minibatch_samples=cfg.scene.num_envs*64//4,
+            batch_geometry_may_differ_from_source=True,
             qualified_deployment=False, ready_for_hardware=False,
-            portable_wrapper_is_new=True, simulator_state_restored=False)
+            portable_wrapper_is_new=True, simulator_state_restored=False,
+            observation29_recording=dict(schema='dogleg_exact_actor_observation29_v1',
+                all_training_envs=True, all_scored_evaluation_cases=True, policy_hz=50,
+                lossless_float32=True, row_subsampling=False, disk_reserve_bytes=8*2**30))
         (out/'control_contract.json').write_text(json.dumps(contract, indent=2), encoding='utf-8')
         architecture = checkpoint_architecture(dict(model_state_dict=actor.state_dict(), actor_output_transform='tanh'))
 
@@ -139,6 +149,9 @@ def run(args):
             temporary.replace(target)
             return target
 
+        if args.mode in ('train', 'evaluate'):
+            observer = Observation29Recorder(out, cfg.scene.num_envs, source_updates, contract['source_checkpoint_sha256'])
+            observer.attach(env)
         if args.mode == 'smoke':
             zero = torch.zeros((cfg.scene.num_envs, 6), device=env.device)
             gaps = []
@@ -156,7 +169,9 @@ def run(args):
         if args.mode == 'evaluate':
             if args.seconds >= 120 and not (env.level == 4 and checkpoint['training_state']['curriculum']['consecutive_passes'] >= 2):
                 raise RuntimeError('Final 120 second qualification requires course4 and two consecutive course gates')
-            result, _ = evaluate(env, actor, out/'evaluation', args.seed, args.seconds)
+            result, _ = evaluate(env, actor, out/'evaluation', args.seed, args.seconds,
+                observer=observer, model_checkpoint=args.checkpoint, cumulative_updates=source_updates)
+            observer.close('evaluation_complete')
             status('EVALUATION_COMPLETE', **{k: result[k] for k in ('soft','protected','seconds','level','final_qualified')})
             return
         save('checkpoint_initial.pt', 0)
@@ -166,12 +181,17 @@ def run(args):
         started = time.monotonic()
         with (out/'metrics.jsonl').open('x', encoding='utf-8', buffering=1) as log:
             while updates < args.updates and time.monotonic()-started < args.minutes*60 and not stopping():
+                observer.begin('training', actor, source_updates+updates,
+                    save('observation29/models/policy_%06d.pt' % (source_updates+updates), updates))
+                update_started = time.monotonic()
+                torch.cuda.reset_peak_memory_stats(env.device)
                 reward_sum = bootstrap_sum = 0.
                 reward_terms = {}
                 before = max((int(v['step'].item()) for v in algorithm.optimizer.state.values()), default=0)
                 with torch.no_grad():
                     for _ in range(64):
                         action = algorithm.act(obs['policy'], empty, empty, obs['critic'])
+                        observer.accepted(env, obs['policy'], action, actor.action_mean)
                         obs, reward, done, timeout, info = env.step(action)
                         reward_sum += float(reward.mean())
                         if timeout.any():
@@ -183,8 +203,11 @@ def run(args):
                             reward_terms[key] = reward_terms.get(key, 0.) + float(value.detach().mean())
                         assert int(env.guard_step_stats['unsafe_positive_reward_decisions']) == 0
                         algorithm.process_env_step(reward, (done|timeout).long(), {}, obs['policy'])
+                    observer.sync()
                     algorithm.compute_returns(obs['critic'])
+                rollout_finished = time.monotonic()
                 losses = algorithm.update()
+                optimizer_finished = time.monotonic()
                 after = max((int(v['step'].item()) for v in algorithm.optimizer.state.values()), default=0)
                 assert after-before == 16 and all(math.isfinite(float(v)) for v in losses)
                 assert LR_MIN <= algorithm.learning_rate <= LR_MAX
@@ -192,8 +215,15 @@ def run(args):
                 actor.logstd.data[:4].clamp_(math.log(.015), math.log(.08))
                 actor.logstd.data[4:].clamp_(math.log(.06), math.log(.30))
                 updates += 1
-                row = dict(update=updates, cumulative_updates=source_updates+updates,
+                row = dict(at=time.time(), update=updates, cumulative_updates=source_updates+updates,
                     cumulative_transitions=source_transitions+updates*cfg.scene.num_envs*64,
+                    num_envs=cfg.scene.num_envs, update_transitions=cfg.scene.num_envs*64,
+                    rollout_wall_s=rollout_finished-update_started,
+                    optimizer_wall_s=optimizer_finished-rollout_finished,
+                    update_wall_s=optimizer_finished-update_started,
+                    decisions_per_second=cfg.scene.num_envs*64/(optimizer_finished-update_started),
+                    CUDA_peak_allocated_bytes=torch.cuda.max_memory_allocated(env.device),
+                    CUDA_peak_reserved_bytes=torch.cuda.max_memory_reserved(env.device),
                     mean_reward=reward_sum/64, timeout_bootstrap_mean=bootstrap_sum/64,
                     reward_terms={key: value/64 for key, value in reward_terms.items()},
                     losses=list(map(float, losses)), adam_steps=after, ppo_minibatches_this_update=after-before,
@@ -204,22 +234,44 @@ def run(args):
                     save('checkpoint_latest.pt', updates)
                 if stopping():
                     break
-                if updates % 100 == 0:
-                    result, obs = evaluate(env, actor, out/f'eval_{updates:04d}', 125071+source_updates+updates)
+                if updates == args.evaluation_update:
+                    eval_checkpoint = save('checkpoint_pre_evaluation.pt', updates)
+                    result, obs = evaluate(env, actor, out/f'eval_{updates:04d}', 125071+source_updates+updates,
+                        observer=observer, model_checkpoint=eval_checkpoint, cumulative_updates=source_updates+updates)
                     promoted = curriculum.observe(result['soft']['passed'], 256, result['protected']['passed'])
                     if promoted:
                         env.level = curriculum.level
                         obs, _ = env.reset()
+                    save('checkpoint_post_evaluation.pt', updates)
             final = save('checkpoint_final.pt', updates)
+            observer.close('training_complete')
         (out/'curriculum_history.json').write_text(json.dumps(curriculum.history, indent=2), encoding='utf-8')
         status('STOPPED' if stopping() else 'TRAINING_COMPLETE', updates=updates,
             cumulative_updates=source_updates+updates, checkpoint=str(final),
             checkpoint_sha256=hashlib.sha256(final.read_bytes()).hexdigest(),
             level=env.level, final_qualification_performed=False, ready_for_hardware=False)
     except BaseException:
-        status('FAIL', error=traceback.format_exc())
+        error_text = traceback.format_exc()
+        error_checkpoint = None
+        error_save_issue = None
+        # Preserve a completed update if later reporting fails. A partial Adam update
+        # is never relabeled as a complete checkpoint.
+        if args.mode == 'train' and 'save' in locals() and 'updates' in locals() and algorithm is not None:
+            try:
+                steps = {int(value['step'].item()) for value in algorithm.optimizer.state.values()}
+                if steps == {(source_updates+updates)*16}:
+                    error_checkpoint = str(save('checkpoint_error.pt', updates))
+            except BaseException:
+                error_save_issue = traceback.format_exc()[-2000:]
+        status('FAIL', error=error_text, complete_update_error_checkpoint=error_checkpoint,
+               error_checkpoint_save_issue=error_save_issue)
         raise
     finally:
+        if observer is not None and not observer.closed:
+            try:
+                observer.close('exception_or_shutdown')
+            except BaseException as recording_error:
+                print('Observation29 recording close issue: '+repr(recording_error), flush=True)
         try:
             if env is not None:
                 env.close()

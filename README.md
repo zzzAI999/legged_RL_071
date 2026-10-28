@@ -42,7 +42,21 @@ git clone https://github.com/zzzAI999/legged_RL_071.git dogleg-rl
 cd dogleg-rl
 ```
 
-资产和最新检查点都已随仓库提供，无需再下载旧工程、Navila、机器人其它型号或历史训练输出。
+运行资产、源URDF、完整网格和一个可复现的完整基线检查点都已随仓库提供，无需再下载旧工程、Navila、机器人其它型号或历史训练输出。源模型入口见 [机器人模型文件](robots/dogleg/README.md)。`checkpoints/guard17.pt` 是保留的已审基线，不代表租用服务器此刻的最新策略；服务器后续训练的大检查点与全量输入记录没有随源码发布。
+
+仓库同时提供两层机器人描述：
+
+| 文件／目录 | 用途 |
+| --- | --- |
+| [标准源URDF](robots/dogleg/urdf/dogleg_demo_finished_motor_belt_tree.urdf) | 修正同步带关系后的树结构，19个link、18个joint |
+| [闭链扩展URDF](robots/dogleg/urdf/dogleg_demo_finished_motor_belt_closed_isaac.urdf) | 包含4个非标准`loop_joint`扩展，需导入器明确支持 |
+| [STL网格](robots/dogleg/meshes/) | URDF引用的完整19个网格，保持相对路径 |
+| [机构配置](robots/dogleg/mechanism/motor_config.json) | 同步带比例、方向和闭链连接点 |
+| [5.5kg来源场景](robots/dogleg/mujoco/dogleg_ground.xml) | 已采用物理模型的来源XML，附齐其19个网格依赖 |
+| [训练运行USD](src/dogleg_rl/assets/dogleg_lab.usda) | Isaac Sim实际使用的模型，含内嵌网格 |
+| [物理参数](src/dogleg_rl/assets/physical_payload.json)／[复位姿态](src/dogleg_rl/assets/reset_atlas.json) | 与运行USD配套的固定参数和合法复位数据 |
+
+源URDF总质量约4.808793095kg；训练USD采用后续构建的5.5kg模型。训练入口直接加载固定USD，不会重新导入URDF。源URDF的历史电机测试限值也不能替代正式训练的控制限值。完整来源、差异和查看方法见模型目录说明。
 
 ## 3. 从零安装环境
 
@@ -149,10 +163,13 @@ python _deps/IsaacLab5080/scripts/tutorials/00_sim/create_empty.py --headless --
 
 ```bash
 dogleg-rl check
+python scripts/check_robot_assets.py
 python -m unittest discover -s tests -v
 ```
 
 `check` 核对固定版本、三个资产 SHA256 和 CPU 策略前向计算，不启动仿真或 CUDA 上下文。输出中应有 `assets_verified: true`、`policy_CPU_forward: true`。
+
+`check_robot_assets.py`只用Python标准库检查全部已登记模型文件的SHA、两个URDF的树结构和惯量、19个STL的完整性、来源XML的全部网格路径，以及XML到训练物理参数的来源哈希；不启动Isaac或GPU。安装Python后即可单独运行。
 
 首次启动 Isaac Sim 可先用官方空场景验证安装；这会启动所选 GPU：
 
@@ -190,6 +207,21 @@ dogleg-rl train --gpu 0 --checkpoint checkpoints/guard17.pt --updates 100 --minu
 ```
 
 **这条命令会启动 Isaac Sim，但默认使用无窗口模式（headless），不会显示训练画面。** Isaac Sim 负责物理仿真，PPO同时收集数据并更新策略。
+
+并行环境数可以通过 `--num-envs` 调整。默认训练使用4096环境；例如，在显存和主机内存充足的机器上使用8192环境：
+
+```bash
+dogleg-rl train --gpu 0 --checkpoint checkpoints/guard17.pt \
+  --num-envs 8192 --updates 100 --minutes 60
+```
+
+先测量8192的实际吞吐量，再根据资源余量尝试 `--num-envs 16384` 或 `--num-envs 32768`；当前支持的上限为32768。`metrics.jsonl` 会记录 `decisions_per_second`、采样与优化耗时，以及 PyTorch 分配／保留显存的峰值；完整GPU占用和主机内存余量记录在 `thermal.jsonl`。PyTorch峰值不包含全部PhysX和图形运行库的占用，应结合GPU总占用判断容量。
+
+每次更新收集 `num_envs × 64` 条决策：8192环境对应524,288条，16384环境对应1,048,576条，32768环境对应2,097,152条。PPO仍执行4轮、每轮4个minibatch，即每次更新16个Adam步骤，因此增大环境数也会改变训练的batch大小。环境数在场景创建时固定，修改正在运行的训练需要先完整保存，再从该检查点启动新的运行目录。
+
+2026-10-27在单张RTX4090 24GB、16核CPU配额、120GiB主机内存配额的租用服务器上，32768环境已实际训练验证：约30,000条决策/秒、GPU利用率约91%、总显存约17.6GiB，采样最低可用主机内存约35.4GiB。原4096环境约16,653条决策/秒。以上是该机器的运行观测；环境数需要结合GPU和主机内存实测选择，更高数据吞吐不直接代表更快通过站立资格。
+
+扩容版本会在GPU可用显存低于2GiB，或可读取的Linux cgroup主机内存余量低于8GiB时请求完成当前更新并保存停止。仍应预留优化和评估时的峰值空间，按实际每秒采样量选择环境数。
 
 如果明确要从随机策略开始，而非继续当前模型：
 
@@ -231,7 +263,16 @@ dogleg-rl train --gpu 0 --fresh --updates 100 --minutes 60 --gui
 
 ### 训练预算、输出与停止
 
-保持 4096 并行环境、每环境 rollout 64 个决策、PPO 4 epochs × 4 minibatches。每更新为 262144 个决策和 16 次 Adam step。达到本段 local100 时才执行一次计划内课程评估；少于 100 更新的早停段不会补跑评估。每段完成后停止，不自动接下一段。
+默认4096并行环境、每环境rollout64个决策、PPO4 epochs×4 minibatches，每更新262144个决策和16次Adam step。使用`--num-envs`时，决策数随环境数变化，Adam仍为每更新16步。默认在本段local100执行唯一计划内课程评估；可通过`--evaluation-update`指定该段唯一评估所在的更新，不因早停补评。每段完成后停止，不自动接下一段。
+
+例如，复用租用服务器已使用的32768环境规模，在最多50次更新／60分钟内，于第3次更新后执行一次课程评估：
+
+```bash
+dogleg-rl train --gpu 0 --checkpoint checkpoints/guard17.pt \
+  --num-envs 32768 --updates 50 --minutes 60 --evaluation-update 3
+```
+
+这条命令从仓库内的基线开始。若需接续你自己的训练，将`--checkpoint`换成上一次实际完整保存的检查点；它会恢复模型、Adam、RNG和课程，而不是把基线文件视为服务器最新模型。运行前须满足GPU空闲、内存和记录磁盘余量。
 
 输出包括 `checkpoint_initial.pt`、滚动覆盖的 `checkpoint_latest.pt`、完整 `checkpoint_final.pt`、`metrics.jsonl`、`receipt.json`、热监控和子进程退出凭证。保存完整模型、Adam、Python／NumPy／CPU／CUDA RNG 和课程状态，继续训练时重新进行物理复位，不恢复仿真轨迹／求解器 warmstart。
 
@@ -245,12 +286,16 @@ touch runs/<当前运行目录>/STOP_AFTER_UPDATE
 
 ## 7. 当前机制与目录
 
+训练和独立评估现支持逐次记录实际送入策略的29维float32输入，连同对应模型、动作、环境／回合编号、时间和成功标签保存到 `output/observation29/`。训练记录全部并行环境，评估记录评分的512个环境；不抽行。以后可提取已通过独立评估的完整输入轨迹，与同一合同、正确对齐的实车输入离线计算逐维误差。字段顺序、存储需求和提取／对比命令见 [29维输入记录与实车对比](docs/OBSERVATION29_RECORDING.md)。既往未记录的输入不能从模型恢复。
+
 - `src/dogleg_rl/core/`：当前环境、奖励、控制和 PPO 的实际依赖闭包。一些模块仍有 `v6/v7/v8` 等名称，因为它们是现版本仍在继承的基础实现；旧实验入口和淘汰运行器未收录。
 - `src/dogleg_rl/assets/`：实际训练的 5.5 kg USD、完整物理参数、合法复位姿态表；已固定 SHA256。
+- `robots/dogleg/`：完整修正源URDF、STL、机构配置、5.5kg来源XML及其网格和来源记录。
 - `src/dogleg_rl/_vendor/`：必要的算法源码及其原始版权声明；不安装另一份冲突的 `rsl_rl`。
-- `checkpoints/guard17.pt`：最新完整检查点。
+- `checkpoints/guard17.pt`：已审完整基线检查点；服务器后续策略另行保存。
 - `results/guard17_summary.json`：已完成的历史短评估结果。
 - `docs/`：完整安装命令、奖励／资格说明和来源清单。
+- `docs/robot_assets_manifest.json`：全部模型来源文件与运行资产的路径、字节数和SHA256。
 
 当前 base gyro 惩罚为 `-0.02 × 2.0 × min(g²,25)`，其余 21 项保持原实现。求解器 TGS32/8，物理 1000 Hz、PD 500 Hz、状态／ACK 100 Hz、策略 50 Hz，腿位置 PD 和轮直接力矩路径保持。细节见 [当前机制](docs/MECHANISM.md)。
 

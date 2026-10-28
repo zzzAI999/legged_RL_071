@@ -58,14 +58,17 @@ def supervise(args):
     out = (args.out or Path('runs')/datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%S_%fZ')).resolve()
     out.mkdir(parents=True, exist_ok=False)
     command = [sys.executable, '-B', '-u', '-m', 'dogleg_rl.cli', args.mode, '--child',
-               '--gpu', str(args.gpu), '--out', str(out), '--updates', str(args.updates),
+               '--gpu', str(args.gpu), '--out', str(out), '--num-envs', str(args.num_envs),
+               '--evaluation-update', str(args.evaluation_update), '--updates', str(args.updates),
                '--minutes', str(args.minutes), '--seconds', str(args.seconds), '--seed', str(args.seed),
                '--checkpoint', str(args.checkpoint.resolve())]
     command += ['--fresh'] if args.fresh else []
     command += ['--gui'] if args.gui else []
     json_file(out/'supervision.json', dict(command=command, gpu_uuid=uuid, automatic_resume=False,
         outer_save_s=4500, outer_TERM_s=5100, outer_KILL_s=5400,
-        warn_c=85, save_c=86, sustained_s=60, urgent_pause_c=88))
+        warn_c=85, save_c=86, sustained_s=60, urgent_pause_c=88,
+        resource_save_margin_GPU_mib=2048, resource_save_margin_host_mib=8192,
+        resource_sample_interval_s=1 if args.num_envs >= 8192 else 10))
     print('Output: ' + str(out), flush=True)
     started = time.monotonic()
     paused = stop_sent = term_sent = False
@@ -95,17 +98,45 @@ def supervise(args):
         while child.poll() is None:
             elapsed = time.monotonic()-started
             if not exact_child(child, ticks, command):
-                if child.poll() is not None:
+                # /proc/cmdline may empty before the exiting child becomes waitable.
+                # Wait only on our Popen child; never signal a mismatched identity.
+                try:
+                    terminal = {}
+                    try:
+                        terminal = json.loads((out/'receipt.json').read_text())
+                    except (OSError, ValueError):
+                        pass
+                    terminal_phases = {'STOPPED', 'SMOKE_COMPLETE', 'FAIL', 'TRAINING_COMPLETE', 'EVALUATION_COMPLETE'}
+                    exiting = generation(child.pid) == ticks and terminal.get('phase') in terminal_phases
+                    child.wait(timeout=60. if exiting else 2.)
+                except subprocess.TimeoutExpired:
+                    pass
+                else:
                     break
-                json_file(out/'supervisor_receipt.json', dict(actual_reaped=False,
+                json_file(out/'supervisor_receipt.json', dict(child_pid=child.pid,
+                    start_ticks=ticks, actual_reaped=False,
                     requires_user_action=True, error='child identity no longer matches; no signal sent'))
                 return 2
-            if elapsed-last_sample >= 10.:
+            if elapsed-last_sample >= (1. if args.num_envs >= 8192 else 10.):
                 last_sample = elapsed
                 try:
                     xml = subprocess.check_output(['nvidia-smi','-i',uuid,'-q','-x'], text=True, timeout=12)
                     sample = dict(at=time.time(), gpu=thermal.parse_gpu(xml))
                     assessment = policy.assess(sample, time.monotonic())
+                    gpu_info = sample['gpu']
+                    free_mib = gpu_info.get('memory_total_mib', 0)-gpu_info.get('memory_used_mib', 0)
+                    sample['GPU_free_mib'] = free_mib
+                    if free_mib < 2048:
+                        assessment['stop_reasons'].append('GPU memory reserve below 2048 MiB')
+                    host_max = Path('/sys/fs/cgroup/memory.max')
+                    host_current = Path('/sys/fs/cgroup/memory.current')
+                    if host_max.is_file() and host_current.is_file():
+                        limit_text = host_max.read_text().strip()
+                        if limit_text.isdigit():
+                            host_free_mib = (int(limit_text)-int(host_current.read_text()))/2**20
+                            sample['host_memory_free_mib'] = host_free_mib
+                            if host_free_mib < 8192:
+                                assessment['stop_reasons'].append('host memory reserve below 8192 MiB')
                     sample['assessment'] = assessment
                     errors = 0
                 except (subprocess.SubprocessError, OSError, ET.ParseError, ValueError) as error:

@@ -1,0 +1,106 @@
+{
+  "source/dogleg_demo_finished/meshes/base_link.STL": {
+    "bytes": 13038684,
+    "sha256": "59d859d3a73f1ec5f3b957ab664fb0e25031bf9e96239c7707f4185e8053c166"
+  },
+  "source/dogleg_demo_finished/meshes/left_front1_wheel.STL": {
+    "bytes": 308484,
+    "sha256": "6fb06cbb6b1f9962379a32ab92c4b3fbe987039017ab9d1ab86a0cfb15c42dbc"
+  },
+  "source/dogleg_demo_finished/meshes/left_front2_link.STL": {
+    "bytes": 658484,
+    "sha256": "924f3d9207aeb194267110c895942d9b65adb56b3780da0d3848347d2f5e5be2"
+  },
+  "source/dogleg_demo_finished/meshes/left_front3_link.STL": {
+    "bytes": 217284,
+    "sha256": "25c0a96a7bc4cc3f00ecae187f9d8bbe4ac7450d5058fbeed42061c95cd39f76"
+  },
+  "source/dogleg_demo_finished/meshes/left_front4_link.STL": {
+    "bytes": 222684,
+    "sha256": "eb0b1fa3c24109ff8d5ffec2e869b06070f5acee0a324acf01a7c814a27f0ace"
+  },
+  "source/dogleg_demo_finished/meshes/left_front5_link.STL": {
+    "bytes": 163184,
+    "sha256": "9c680dbd6402d401698d9df4147eab9160314b2a2c9a91279da5249464e24fa9"
+  },
+  "source/dogleg_demo_finished/meshes/left_rear1_wheel.STL": {
+    "bytes": 359084,
+    "sha256": "6d671caa028b45b74babc0ed49a0f08632ae49de1388271f911ffd6f9ec014e1"
+  },
+  "source/dogleg_demo_finished/meshes/left_rear2_link.STL": {
+    "bytes": 1317084,
+    "sha256": "5a22cb14a573baa2534c2ae5f922ce9701171558bee18db3017d2cefba9c5250"
+  },
+  "source/dogleg_demo_finished/meshes/left_rear3_link.STL": {
+    "bytes": 678584,
+    "sha256": "da1a80bb7a7226154645be120a8eb6bc9d9ae6b0f47605d36c74d00b1010b7ec"
+  },
+  "source/dogleg_demo_finished/meshes/left_rear4_link.STL": {
+    "bytes": 4989684,
+    "sha256": "816c95960db507c251008d35ecd2a93cda90d99521b83cd33dee45fad9216e87"
+  },
+  "source/dogleg_demo_finished/meshes/right_front1_wheel.STL": {
+    "bytes": 308484,
+    "sha256": "dcadf44a10946a55473e853b6b3bb825207054b8222ec5eaebb74d5e509e9c61"
+  },
+  "source/dogleg_demo_finished/meshes/right_front2_link.STL": {
+    "bytes": 644084,
+    "sha256": "4ff140b8f1c90867722a8e63725892ffd1ba7e0d9fa0befbc2088081dbaaedbd"
+  },
+  "source/dogleg_demo_finished/meshes/right_front3_link.STL": {
+    "bytes": 202884,
+    "sha256": "95ae3595d875f0ef1a8d11f50e1227cb5ed1a754660e0420b571a5dc889a6069"
+  },
+  "source/dogleg_demo_finished/meshes/right_front4_link.STL": {
+    "bytes": 222684,
+    "sha256": "164004eecebee9218ff51952203f2f1afc7ea7db4a15adee012fab60eb6bd83b"
+  },
+  "source/dogleg_demo_finished/meshes/right_front5_link.STL": {
+    "bytes": 163184,
+    "sha256": "a86866534ff2ba42a13f118917ee2043f6d9112065201155261d8fee2477dce4"
+  },
+  "source/dogleg_demo_finished/meshes/right_rear1_wheel.STL": {
+    "bytes": 359084,
+    "sha256": "9725757fa0d0fe65deaeb7f2aaa3981a19cb523a936e1cfb2b96c287941b6891"
+  },
+  "source/dogleg_demo_finished/meshes/right_rear2_link.STL": {
+    "bytes": 1317084,
+    "sha256": "ac2b9215c21561e056f9d34181a8d8112198f085cea9a0ecba84659fadc14e99"
+  },
+  "source/dogleg_demo_finished/meshes/right_rear3_link.STL": {
+    "bytes": 678584,
+    "sha256": "6bb3d4e5e275192c501a9ab646bf44ccdc16384760daba6900b230f7e95bb83f"
+  },
+  "source/dogleg_demo_finished/meshes/right_rear4_link.STL": {
+    "bytes": 4989684,
+    "sha256": "9e0719d279ab6f1835025db6c34a36f5813deb2d2132465d57a45f416020e02c"
+  },
+  "source/dogleg_demo_finished/urdf/dogleg_demo_finished.csv": {
+    "bytes": 24270,
+    "sha256": "2c727340bfdd1f7b21ab1578cba382acabe70ada8a21d8dafd7dc907ad5c08b9"
+  },
+  "source/dogleg_demo_finished/urdf/dogleg_demo_finished.urdf": {
+    "bytes": 27025,
+    "sha256": "3dcd19b2b4631ebf716694a42bd11ccaad460d4564d9b53a9ba95eda95f137e8"
+  },
+  "source/dogleg_demo_finished/urdf/dogleg_demo_finished_motor_belt_closed_isaac.urdf": {
+    "bytes": 23918,
+    "sha256": "e7467eb7519253ab74886d1839d24be14f44571e6172e3cea47cd894d735b802"
+  },
+  "source/dogleg_demo_finished/urdf/dogleg_demo_finished_motor_belt_tree.urdf": {
+    "bytes": 22485,
+    "sha256": "190d959e2a49ada182bb78c62e7a1b50f9316f3e5dcb060f3aa90cebb7ec5968"
+  },
+  "motor_config.json": {
+    "bytes": 14789,
+    "sha256": "e083c116b6584683ce11a09d9ca1eba902d12705bd4368f4d9431c2a34a38f3a"
+  },
+  "geometry_audit.json": {
+    "bytes": 454178,
+    "sha256": "ae4137267a94ee0b2a2d4bf4dc4cd487f366e819c9d00350b465735f748ea1d1"
+  },
+  "scripts/dogleg_motor_demo.py": {
+    "bytes": 23183,
+    "sha256": "d7f3389de9015bf4e82b36ab72fda9742f6bcde0f8bacff2e559d65e967d6116"
+  }
+}

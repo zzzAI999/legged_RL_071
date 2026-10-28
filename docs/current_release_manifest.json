@@ -1,0 +1,303 @@
+{
+  "schema": "portable_current_code_and_robot_sources_20261028",
+  "project_files": [
+    {
+      "path": "src/dogleg_rl/__init__.py",
+      "bytes": 98,
+      "sha256": "e9dced4e1369dd3c56faa56161701595ac796937f7c1b96ddd16e1eede5ce1f1"
+    },
+    {
+      "path": "src/dogleg_rl/_vendor/__init__.py",
+      "bytes": 71,
+      "sha256": "a3567123d8494c2547fa6b379a103fa95f8d4f5f0a37b984a632cfe476f51304"
+    },
+    {
+      "path": "src/dogleg_rl/_vendor/rsl_rl/__init__.py",
+      "bytes": 323,
+      "sha256": "7fff20742d59fd7e7430600b12814bd3f1b63f4c42f093a3f2199435de105976"
+    },
+    {
+      "path": "src/dogleg_rl/_vendor/rsl_rl/algorithm/__init__.py",
+      "bytes": 40,
+      "sha256": "64866743b5e0b43e7a57cfeaeac608ad8aaef29c433a5a0fd0f4a4e5d20f851e"
+    },
+    {
+      "path": "src/dogleg_rl/_vendor/rsl_rl/algorithm/ppo.py",
+      "bytes": 12388,
+      "sha256": "794783a332c181c28b7ac50dfc0d3432fd3bb47c56ee2bd05fe449f16b14818c"
+    },
+    {
+      "path": "src/dogleg_rl/_vendor/rsl_rl/modules/__init__.py",
+      "bytes": 116,
+      "sha256": "ecd0777ddf971d10e3f8c125b3556409b059bae1a416b79c1ec9abcf793c5ca2"
+    },
+    {
+      "path": "src/dogleg_rl/_vendor/rsl_rl/modules/actor_critic.py",
+      "bytes": 7230,
+      "sha256": "5192d9a1cb31c48ec47806621d12e532cbea09b0a67a40d4389c02a532b084eb"
+    },
+    {
+      "path": "src/dogleg_rl/_vendor/rsl_rl/modules/mlp_encoder.py",
+      "bytes": 4666,
+      "sha256": "0f95c124e1e9edccc08fcda8e5ba57a5c4758ff4265bd22a90dc3076cb17131d"
+    },
+    {
+      "path": "src/dogleg_rl/_vendor/rsl_rl/storage/__init__.py",
+      "bytes": 75,
+      "sha256": "a979b1212cf134adbb03262479d399715f178f1d2c1d5d886db409441b28d47b"
+    },
+    {
+      "path": "src/dogleg_rl/_vendor/rsl_rl/storage/rollout_storage.py",
+      "bytes": 12957,
+      "sha256": "54ce40d457d4ebd6347d1979b7ad88931a3ac0f2ae7dc46429f687b40db9450a"
+    },
+    {
+      "path": "src/dogleg_rl/checks.py",
+      "bytes": 1476,
+      "sha256": "74d12852d7948e85fabe2a35da6e3fe6f290249ed97ceeb09eb70ae8f538fdec"
+    },
+    {
+      "path": "src/dogleg_rl/cli.py",
+      "bytes": 4353,
+      "sha256": "b05a1a8c08e9c84d26a5b1c6cfc7b9c2ba485cdec56124c35ab9d114066f1e4b"
+    },
+    {
+      "path": "src/dogleg_rl/core/__init__.py",
+      "bytes": 83,
+      "sha256": "d583f1765e2956c197a6f182b018643254cb3d3ad25d05349810594b00d522a7"
+    },
+    {
+      "path": "src/dogleg_rl/core/bounded_adaptive_ppo.py",
+      "bytes": 857,
+      "sha256": "edb6d431db0ccb9cc1e5f50abffbb69165b3e2eaf9dfb57040f02db29c95a51d"
+    },
+    {
+      "path": "src/dogleg_rl/core/command_contract.py",
+      "bytes": 1200,
+      "sha256": "f46610a43e059c072df30cd8c9f37ef7fef3faaa3b3f2a7c00e7c165821e2cef"
+    },
+    {
+      "path": "src/dogleg_rl/core/deployment_contract.py",
+      "bytes": 1432,
+      "sha256": "cc470ac969f3556e5aa30171bac112967f875b26df8dc4765921e7b038680935"
+    },
+    {
+      "path": "src/dogleg_rl/core/deployment_environment.py",
+      "bytes": 2825,
+      "sha256": "83646661476fe84999418d8e8133d0a8dc8c764d1b3fcefd637382aff42af59b"
+    },
+    {
+      "path": "src/dogleg_rl/core/inertia_contract.py",
+      "bytes": 1109,
+      "sha256": "bcb45b06a54d264395a7e646e52447e1a9271d61d1b372d5e27508376d8f52ef"
+    },
+    {
+      "path": "src/dogleg_rl/core/inertial_randomization.py",
+      "bytes": 6140,
+      "sha256": "e906cfce821dd1f3d586188c506d3d88443be33a025504e55bf76d6a32857729"
+    },
+    {
+      "path": "src/dogleg_rl/core/lab_environment.py",
+      "bytes": 10276,
+      "sha256": "ce69ce8962a8862e8daa1173351a0a10623aea7cf2c775c7f1878673b5e47fb9"
+    },
+    {
+      "path": "src/dogleg_rl/core/policy_architecture.py",
+      "bytes": 2835,
+      "sha256": "c40ef6258dd8be19cb4ecd7e96a1459f5cf0b1a5b4d1153ed054ab4a1a6922a5"
+    },
+    {
+      "path": "src/dogleg_rl/core/recovery_contract.py",
+      "bytes": 3185,
+      "sha256": "5fb9b841ee4c5a0f791c90bd1d0d3ad765243b5317701b34d6b6b49729a15c9f"
+    },
+    {
+      "path": "src/dogleg_rl/core/recovery_contract_v3.py",
+      "bytes": 1168,
+      "sha256": "35ff8ba8095a46fb7811f534de7e45ce9e6748c1d6395b3d059acddae8a11058"
+    },
+    {
+      "path": "src/dogleg_rl/core/recovery_contract_v4.py",
+      "bytes": 1536,
+      "sha256": "9143b38041a7bd0bada92e8f3798cb69518bedafe7482d1405f5a349751e68c2"
+    },
+    {
+      "path": "src/dogleg_rl/core/recovery_environment.py",
+      "bytes": 21422,
+      "sha256": "ce457c1ab7276f109fe74b488466ecc2e601128c65ffca8c31783055e1cc27c1"
+    },
+    {
+      "path": "src/dogleg_rl/core/repair_rewards.py",
+      "bytes": 1267,
+      "sha256": "1f7ea8bf58b42e64318ac41b9ae80ef688aee286c1c056873892eeb1ec4200c7"
+    },
+    {
+      "path": "src/dogleg_rl/core/skills_environment.py",
+      "bytes": 20647,
+      "sha256": "4ad758e939dec92a6ebce8af8d6c0ed2dada1a6433450f16c7ecee19151811ad"
+    },
+    {
+      "path": "src/dogleg_rl/core/standing_environment.py",
+      "bytes": 10813,
+      "sha256": "f4c30c80f802950d3a827b83ebdb368ce56aec359f08cfd67740d6a0fc56a981"
+    },
+    {
+      "path": "src/dogleg_rl/core/standing_environment_guard.py",
+      "bytes": 2745,
+      "sha256": "3ad9d47a340e4b0330f847a9a1d6ecdcf4ee7e2932b73eb20004598316f45fa2"
+    },
+    {
+      "path": "src/dogleg_rl/core/standing_environment_guard_v2.py",
+      "bytes": 1196,
+      "sha256": "48e99c9508fbd3caa61aaf55e32979b54dfbe846a78d64e3c2e288dfc93d9271"
+    },
+    {
+      "path": "src/dogleg_rl/core/standing_environment_gyro_penalty_v1.py",
+      "bytes": 682,
+      "sha256": "e9f5b046a9268e163450b79c06e084678c77bb25cb105991600d1bd77ef2c1be"
+    },
+    {
+      "path": "src/dogleg_rl/core/standing_environment_leg_velocity_v1.py",
+      "bytes": 2939,
+      "sha256": "9233eceb818570db11844ea0cd4c766e872e9c117de7386522e70dc2406d7b85"
+    },
+    {
+      "path": "src/dogleg_rl/core/standing_environment_margin_v1.py",
+      "bytes": 1431,
+      "sha256": "a40803047f6b1b9a08311390682cbb97e7f2373d747ef0322e594b4e60317f82"
+    },
+    {
+      "path": "src/dogleg_rl/core/standing_environment_v6.py",
+      "bytes": 1119,
+      "sha256": "d4d893a12c465952264ce1024253d180b637625d8429c31b53dd8cf281acbc93"
+    },
+    {
+      "path": "src/dogleg_rl/core/standing_environment_v7.py",
+      "bytes": 1421,
+      "sha256": "6c22b3572b4db74933f70a4022ccd2834bc3426c5470b64058cbcc8f8cd29c8e"
+    },
+    {
+      "path": "src/dogleg_rl/core/standing_environment_v8.py",
+      "bytes": 1112,
+      "sha256": "dff12724ff55d931f6bc87d8a50edb01a72f43cfe29250a1664c303ace762614"
+    },
+    {
+      "path": "src/dogleg_rl/core/standing_guard_protocol.py",
+      "bytes": 1586,
+      "sha256": "def628eb6f25e7c6c0497bb48d18acf8dffa073ba250ad4cc03010d9d8a35aff"
+    },
+    {
+      "path": "src/dogleg_rl/core/standing_gyro_penalty_reward_v1.py",
+      "bytes": 2011,
+      "sha256": "a7bf309e9d8eb17952181afd58d67e3e1e8fcd239834b12441bff48d513ef938"
+    },
+    {
+      "path": "src/dogleg_rl/core/standing_leg_velocity_restore_v1.py",
+      "bytes": 1871,
+      "sha256": "e2e6d5651d56b9a9e5e247df59d8ceb3911fd2515a0684138500b3ced228f20b"
+    },
+    {
+      "path": "src/dogleg_rl/core/standing_leg_velocity_reward_v1.py",
+      "bytes": 3902,
+      "sha256": "fb95ce92975f76824b5927803cfa1a23b7f8a0074632d28a79bfc4add6a8aeca"
+    },
+    {
+      "path": "src/dogleg_rl/core/standing_margin_reward.py",
+      "bytes": 1753,
+      "sha256": "775614904f9aecf40e98aaea5270be48d3a04f5ad91c2855c9d32345e62d4cde"
+    },
+    {
+      "path": "src/dogleg_rl/core/standing_math.py",
+      "bytes": 2780,
+      "sha256": "4133a9a9e97bcb4ce252a953e4040fe7ac25ed1da87a55ac274a56a60973a657"
+    },
+    {
+      "path": "src/dogleg_rl/core/standing_math_guard.py",
+      "bytes": 919,
+      "sha256": "3d8ef89697098fad722da483ae55b289edfe26d262e3f474dc6f36d42f1a2b6c"
+    },
+    {
+      "path": "src/dogleg_rl/core/standing_math_v6.py",
+      "bytes": 1643,
+      "sha256": "29ea2c988fb3497ff209ecfe67345faa8f590d13294d5bcbfe5a893a60f1b443"
+    },
+    {
+      "path": "src/dogleg_rl/core/standing_math_v7.py",
+      "bytes": 1237,
+      "sha256": "dbef15bdc04711f3cecb0e3224091c12f841cb06a811c9d025aa9a3727a4bbb6"
+    },
+    {
+      "path": "src/dogleg_rl/core/standing_math_v8.py",
+      "bytes": 1491,
+      "sha256": "4b2cc459d98f01d55a5b5d61fdb3303a63c706818e437dd5790ea3ccd2af5ca4"
+    },
+    {
+      "path": "src/dogleg_rl/core/standing_training_state.py",
+      "bytes": 1721,
+      "sha256": "b73421d0f5991477eac176a6bce995dc8f7373009adb1a6a7d84df64e805e1d8"
+    },
+    {
+      "path": "src/dogleg_rl/core/thermal_policy.py",
+      "bytes": 4912,
+      "sha256": "734e443007d4af624fdc9cc4d36ef710324822cb2b87899d1b0d902ae116ea10"
+    },
+    {
+      "path": "src/dogleg_rl/core/wheel_current_guard.py",
+      "bytes": 785,
+      "sha256": "bb559ba42c53cef8c87b03e33eb9847e5f2d5a1a341cc7df9fbc929861e02212"
+    },
+    {
+      "path": "src/dogleg_rl/evaluation.py",
+      "bytes": 4980,
+      "sha256": "874b24817fcce2815d10320730139f7dc5ce295d6a912d872c9ac6fbcdb4d3d1"
+    },
+    {
+      "path": "src/dogleg_rl/monitor.py",
+      "bytes": 8650,
+      "sha256": "914ffd6d7a374cb919bcd6d60659a7a7ca3ee77225c8f8baa892753770d1250a"
+    },
+    {
+      "path": "src/dogleg_rl/observation29_compare_v1.py",
+      "bytes": 6098,
+      "sha256": "a002a46f4622349d91f4f59f2cfece1cdfd4116809ced4a39f3e4365ddfbc1eb"
+    },
+    {
+      "path": "src/dogleg_rl/observation29_recording_v1.py",
+      "bytes": 14668,
+      "sha256": "4ae139b810dfa00cf61464e0508eee0bd8cafd5401a0c3cc7b3376baa4b20481"
+    },
+    {
+      "path": "src/dogleg_rl/runner.py",
+      "bytes": 16757,
+      "sha256": "3469136d3bf56f3d876b66fe93c5809bdae28bdfc1af68a494ef869d45cac41a"
+    }
+  ],
+  "recorder_release_exact_match": {
+    "runner.py": "3469136d3bf56f3d876b66fe93c5809bdae28bdfc1af68a494ef869d45cac41a",
+    "evaluation.py": "874b24817fcce2815d10320730139f7dc5ce295d6a912d872c9ac6fbcdb4d3d1",
+    "observation29_recording_v1.py": "4ae139b810dfa00cf61464e0508eee0bd8cafd5401a0c3cc7b3376baa4b20481",
+    "observation29_compare_v1.py": "a002a46f4622349d91f4f59f2cfece1cdfd4116809ced4a39f3e4365ddfbc1eb"
+  },
+  "robot_manifest": "docs/robot_assets_manifest.json",
+  "robot_manifest_SHA256": "37315c9f1b0aa245bb70f3354072431b6077e71a90e7b46ca84dcb6a7c23b8c3",
+  "bundled_checkpoint": "checkpoints/guard17.pt",
+  "bundled_checkpoint_SHA256": "65bf85f0fc9fb5ee9bcdff97cda9e96527c71c6c27c974c334edf602878c974f",
+  "checkpoint_role": "Reviewed reproducible baseline, not the rental server latest policy",
+  "training_environment_capacity": 32768,
+  "observation29_full_recording": true,
+  "runtime_model_reward_physics_controller_unchanged": true,
+  "no_server_mutation_GPU_training_evaluation_or_hardware_operation": true,
+  "robot_asset_check": {
+    "passed": true,
+    "SHA_verified_files": 48
+  },
+  "CPU_integration_tests": {
+    "passed": true,
+    "cases": 7,
+    "verification_python": "3.10.11",
+    "verification_torch": "2.2.2+cu118",
+    "verification_numpy": "1.24.3",
+    "full_isaac_installation_or_GPU_test_performed": false,
+    "supported_runtime_versions_remain_in_constraints_and_INSTALL": true
+  }
+}

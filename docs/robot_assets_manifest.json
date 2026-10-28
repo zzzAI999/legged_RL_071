@@ -1,0 +1,256 @@
+{
+  "schema": "dogleg_complete_model_sources_v1",
+  "primary_urdf": "robots/dogleg/urdf/dogleg_demo_finished_motor_belt_tree.urdf",
+  "optional_loop_extension": "robots/dogleg/urdf/dogleg_demo_finished_motor_belt_closed_isaac.urdf",
+  "source_URDF_mass_kg": 4.808793095109237,
+  "training_runtime_mass_kg": 5.5,
+  "URDF_is_not_runtime_dynamics_equivalence": true,
+  "all_model_source_bytes_preserved": true,
+  "source_provenance": "Previously verified local source collection",
+  "fresh_server_observation_performed": false,
+  "installed_simulator_environment_included": false,
+  "runtime_assets": [
+    {
+      "path": "src/dogleg_rl/assets/dogleg_lab.usda",
+      "bytes": 27348893,
+      "sha256": "fdf4c05cb5acbcf547aa8eee458707ba41efd643ea038e077d0341273087b06c"
+    },
+    {
+      "path": "src/dogleg_rl/assets/physical_payload.json",
+      "bytes": 184557,
+      "sha256": "a982791ce998da6d9472d48ff18f179c90288743e686cc6115be6c5fae2c47df"
+    },
+    {
+      "path": "src/dogleg_rl/assets/reset_atlas.json",
+      "bytes": 1154745,
+      "sha256": "c5a58dcbad1792727cb64e5d9c9733fc53e487b51be9d32975bdd96918693af5"
+    }
+  ],
+  "files": [
+    {
+      "path": "robots/dogleg/urdf/dogleg_demo_finished_motor_belt_closed_isaac.urdf",
+      "bytes": 23918,
+      "sha256": "e7467eb7519253ab74886d1839d24be14f44571e6172e3cea47cd894d735b802"
+    },
+    {
+      "path": "robots/dogleg/urdf/dogleg_demo_finished_motor_belt_tree.urdf",
+      "bytes": 22485,
+      "sha256": "190d959e2a49ada182bb78c62e7a1b50f9316f3e5dcb060f3aa90cebb7ec5968"
+    },
+    {
+      "path": "robots/dogleg/meshes/base_link.STL",
+      "bytes": 13038684,
+      "sha256": "59d859d3a73f1ec5f3b957ab664fb0e25031bf9e96239c7707f4185e8053c166"
+    },
+    {
+      "path": "robots/dogleg/meshes/left_front1_wheel.STL",
+      "bytes": 308484,
+      "sha256": "6fb06cbb6b1f9962379a32ab92c4b3fbe987039017ab9d1ab86a0cfb15c42dbc"
+    },
+    {
+      "path": "robots/dogleg/meshes/left_front2_link.STL",
+      "bytes": 658484,
+      "sha256": "924f3d9207aeb194267110c895942d9b65adb56b3780da0d3848347d2f5e5be2"
+    },
+    {
+      "path": "robots/dogleg/meshes/left_front3_link.STL",
+      "bytes": 217284,
+      "sha256": "25c0a96a7bc4cc3f00ecae187f9d8bbe4ac7450d5058fbeed42061c95cd39f76"
+    },
+    {
+      "path": "robots/dogleg/meshes/left_front4_link.STL",
+      "bytes": 222684,
+      "sha256": "eb0b1fa3c24109ff8d5ffec2e869b06070f5acee0a324acf01a7c814a27f0ace"
+    },
+    {
+      "path": "robots/dogleg/meshes/left_front5_link.STL",
+      "bytes": 163184,
+      "sha256": "9c680dbd6402d401698d9df4147eab9160314b2a2c9a91279da5249464e24fa9"
+    },
+    {
+      "path": "robots/dogleg/meshes/left_rear1_wheel.STL",
+      "bytes": 359084,
+      "sha256": "6d671caa028b45b74babc0ed49a0f08632ae49de1388271f911ffd6f9ec014e1"
+    },
+    {
+      "path": "robots/dogleg/meshes/left_rear2_link.STL",
+      "bytes": 1317084,
+      "sha256": "5a22cb14a573baa2534c2ae5f922ce9701171558bee18db3017d2cefba9c5250"
+    },
+    {
+      "path": "robots/dogleg/meshes/left_rear3_link.STL",
+      "bytes": 678584,
+      "sha256": "da1a80bb7a7226154645be120a8eb6bc9d9ae6b0f47605d36c74d00b1010b7ec"
+    },
+    {
+      "path": "robots/dogleg/meshes/left_rear4_link.STL",
+      "bytes": 4989684,
+      "sha256": "816c95960db507c251008d35ecd2a93cda90d99521b83cd33dee45fad9216e87"
+    },
+    {
+      "path": "robots/dogleg/meshes/right_front1_wheel.STL",
+      "bytes": 308484,
+      "sha256": "dcadf44a10946a55473e853b6b3bb825207054b8222ec5eaebb74d5e509e9c61"
+    },
+    {
+      "path": "robots/dogleg/meshes/right_front2_link.STL",
+      "bytes": 644084,
+      "sha256": "4ff140b8f1c90867722a8e63725892ffd1ba7e0d9fa0befbc2088081dbaaedbd"
+    },
+    {
+      "path": "robots/dogleg/meshes/right_front3_link.STL",
+      "bytes": 202884,
+      "sha256": "95ae3595d875f0ef1a8d11f50e1227cb5ed1a754660e0420b571a5dc889a6069"
+    },
+    {
+      "path": "robots/dogleg/meshes/right_front4_link.STL",
+      "bytes": 222684,
+      "sha256": "164004eecebee9218ff51952203f2f1afc7ea7db4a15adee012fab60eb6bd83b"
+    },
+    {
+      "path": "robots/dogleg/meshes/right_front5_link.STL",
+      "bytes": 163184,
+      "sha256": "a86866534ff2ba42a13f118917ee2043f6d9112065201155261d8fee2477dce4"
+    },
+    {
+      "path": "robots/dogleg/meshes/right_rear1_wheel.STL",
+      "bytes": 359084,
+      "sha256": "9725757fa0d0fe65deaeb7f2aaa3981a19cb523a936e1cfb2b96c287941b6891"
+    },
+    {
+      "path": "robots/dogleg/meshes/right_rear2_link.STL",
+      "bytes": 1317084,
+      "sha256": "ac2b9215c21561e056f9d34181a8d8112198f085cea9a0ecba84659fadc14e99"
+    },
+    {
+      "path": "robots/dogleg/meshes/right_rear3_link.STL",
+      "bytes": 678584,
+      "sha256": "6bb3d4e5e275192c501a9ab646bf44ccdc16384760daba6900b230f7e95bb83f"
+    },
+    {
+      "path": "robots/dogleg/meshes/right_rear4_link.STL",
+      "bytes": 4989684,
+      "sha256": "9e0719d279ab6f1835025db6c34a36f5813deb2d2132465d57a45f416020e02c"
+    },
+    {
+      "path": "robots/dogleg/mechanism/motor_config.json",
+      "bytes": 14789,
+      "sha256": "e083c116b6584683ce11a09d9ca1eba902d12705bd4368f4d9431c2a34a38f3a"
+    },
+    {
+      "path": "robots/dogleg/mujoco/dogleg_ground.xml",
+      "bytes": 77862,
+      "sha256": "38984c7260da425496225af97d3e969c6376f676e516bad7cf39db9a95175e35"
+    },
+    {
+      "path": "robots/dogleg/mujoco/motor_config.json",
+      "bytes": 14789,
+      "sha256": "e083c116b6584683ce11a09d9ca1eba902d12705bd4368f4d9431c2a34a38f3a"
+    },
+    {
+      "path": "robots/dogleg/mujoco/meshes/base_link.obj",
+      "bytes": 10746630,
+      "sha256": "d2ea2fae481924557ed6cad78ab61769643ac0fe5092d1a9ec92257995e7e0a6"
+    },
+    {
+      "path": "robots/dogleg/mujoco/meshes/left_front1_wheel.STL",
+      "bytes": 308484,
+      "sha256": "6fb06cbb6b1f9962379a32ab92c4b3fbe987039017ab9d1ab86a0cfb15c42dbc"
+    },
+    {
+      "path": "robots/dogleg/mujoco/meshes/left_front2_link.STL",
+      "bytes": 658484,
+      "sha256": "924f3d9207aeb194267110c895942d9b65adb56b3780da0d3848347d2f5e5be2"
+    },
+    {
+      "path": "robots/dogleg/mujoco/meshes/left_front3_link.STL",
+      "bytes": 217284,
+      "sha256": "25c0a96a7bc4cc3f00ecae187f9d8bbe4ac7450d5058fbeed42061c95cd39f76"
+    },
+    {
+      "path": "robots/dogleg/mujoco/meshes/left_front4_link.STL",
+      "bytes": 222684,
+      "sha256": "eb0b1fa3c24109ff8d5ffec2e869b06070f5acee0a324acf01a7c814a27f0ace"
+    },
+    {
+      "path": "robots/dogleg/mujoco/meshes/left_front5_link.STL",
+      "bytes": 163184,
+      "sha256": "9c680dbd6402d401698d9df4147eab9160314b2a2c9a91279da5249464e24fa9"
+    },
+    {
+      "path": "robots/dogleg/mujoco/meshes/left_rear1_wheel.STL",
+      "bytes": 359084,
+      "sha256": "6d671caa028b45b74babc0ed49a0f08632ae49de1388271f911ffd6f9ec014e1"
+    },
+    {
+      "path": "robots/dogleg/mujoco/meshes/left_rear2_link.STL",
+      "bytes": 1317084,
+      "sha256": "5a22cb14a573baa2534c2ae5f922ce9701171558bee18db3017d2cefba9c5250"
+    },
+    {
+      "path": "robots/dogleg/mujoco/meshes/left_rear3_link.STL",
+      "bytes": 678584,
+      "sha256": "da1a80bb7a7226154645be120a8eb6bc9d9ae6b0f47605d36c74d00b1010b7ec"
+    },
+    {
+      "path": "robots/dogleg/mujoco/meshes/left_rear4_link.STL",
+      "bytes": 4989684,
+      "sha256": "816c95960db507c251008d35ecd2a93cda90d99521b83cd33dee45fad9216e87"
+    },
+    {
+      "path": "robots/dogleg/mujoco/meshes/right_front1_wheel.STL",
+      "bytes": 308484,
+      "sha256": "dcadf44a10946a55473e853b6b3bb825207054b8222ec5eaebb74d5e509e9c61"
+    },
+    {
+      "path": "robots/dogleg/mujoco/meshes/right_front2_link.STL",
+      "bytes": 644084,
+      "sha256": "4ff140b8f1c90867722a8e63725892ffd1ba7e0d9fa0befbc2088081dbaaedbd"
+    },
+    {
+      "path": "robots/dogleg/mujoco/meshes/right_front3_link.STL",
+      "bytes": 202884,
+      "sha256": "95ae3595d875f0ef1a8d11f50e1227cb5ed1a754660e0420b571a5dc889a6069"
+    },
+    {
+      "path": "robots/dogleg/mujoco/meshes/right_front4_link.STL",
+      "bytes": 222684,
+      "sha256": "164004eecebee9218ff51952203f2f1afc7ea7db4a15adee012fab60eb6bd83b"
+    },
+    {
+      "path": "robots/dogleg/mujoco/meshes/right_front5_link.STL",
+      "bytes": 163184,
+      "sha256": "a86866534ff2ba42a13f118917ee2043f6d9112065201155261d8fee2477dce4"
+    },
+    {
+      "path": "robots/dogleg/mujoco/meshes/right_rear1_wheel.STL",
+      "bytes": 359084,
+      "sha256": "9725757fa0d0fe65deaeb7f2aaa3981a19cb523a936e1cfb2b96c287941b6891"
+    },
+    {
+      "path": "robots/dogleg/mujoco/meshes/right_rear2_link.STL",
+      "bytes": 1317084,
+      "sha256": "ac2b9215c21561e056f9d34181a8d8112198f085cea9a0ecba84659fadc14e99"
+    },
+    {
+      "path": "robots/dogleg/mujoco/meshes/right_rear3_link.STL",
+      "bytes": 678584,
+      "sha256": "6bb3d4e5e275192c501a9ab646bf44ccdc16384760daba6900b230f7e95bb83f"
+    },
+    {
+      "path": "robots/dogleg/mujoco/meshes/right_rear4_link.STL",
+      "bytes": 4989684,
+      "sha256": "9e0719d279ab6f1835025db6c34a36f5813deb2d2132465d57a45f416020e02c"
+    },
+    {
+      "path": "robots/dogleg/provenance/model_receipt.json",
+      "bytes": 7277,
+      "sha256": "4fb9e54ac878a770d6f492bfb1b88e1703018bf532673f243bd2e1279ce6a720"
+    },
+    {
+      "path": "robots/dogleg/provenance/source_package_manifest.json",
+      "bytes": 4475,
+      "sha256": "c8ce55bfe7c7da51b16482b31399824b0575003c5ed106103600779a19d28f37"
+    }
+  ]
+}

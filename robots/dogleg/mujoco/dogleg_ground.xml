@@ -1,0 +1,392 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mujoco model="dogleg_ground_mit_rl_reference_v1">
+  <compiler angle="radian" meshdir="meshes" inertiafromgeom="false" fusestatic="false" />
+  <asset>
+    <mesh name="base_link" file="base_link.obj" />
+    <mesh name="left_rear2_link" file="left_rear2_link.STL" />
+    <mesh name="left_rear3_link" file="left_rear3_link.STL" />
+    <mesh name="left_rear4_link" file="left_rear4_link.STL" />
+    <mesh name="left_front2_link" file="left_front2_link.STL" />
+    <mesh name="left_front3_link" file="left_front3_link.STL" />
+    <mesh name="left_front4_link" file="left_front4_link.STL" />
+    <mesh name="left_front5_link" file="left_front5_link.STL" />
+    <mesh name="right_rear2_link" file="right_rear2_link.STL" />
+    <mesh name="right_rear3_link" file="right_rear3_link.STL" />
+    <mesh name="right_rear4_link" file="right_rear4_link.STL" />
+    <mesh name="right_front2_link" file="right_front2_link.STL" />
+    <mesh name="right_front3_link" file="right_front3_link.STL" />
+    <mesh name="right_front4_link" file="right_front4_link.STL" />
+    <mesh name="right_front5_link" file="right_front5_link.STL" />
+    <mesh name="left_front1_wheel" file="left_front1_wheel.STL" />
+    <mesh name="left_rear1_wheel" file="left_rear1_wheel.STL" />
+    <mesh name="right_front1_wheel" file="right_front1_wheel.STL" />
+    <mesh name="right_rear1_wheel" file="right_rear1_wheel.STL" />
+  </asset>
+  <worldbody>
+    <body name="base_link" pos="0 0 0.30" quat="0.7071067811865476 0.7071067811865476 0 0">
+      <inertial mass="2.4906675936973524" pos="0.00695617 0.148778 0.000109732100770301" fullinertia="0.0277906462657706 0.0386292566602057 0.04 -0.000168192466541968 1.4192187983545e-05 -3.79467343359665e-06" />
+      <freejoint name="floating_base" />
+      <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.61 0.65 0.68 1" mesh="base_link" />
+      <geom type="mesh" rgba="0 0 0 0" mesh="base_link" contype="0" conaffinity="0" />
+      <body name="left_rear2_link" pos="-0.00054383 0.068778 0.096" quat="1 0 0 0">
+        <inertial mass="0.36356743542696124" pos="0.00424484052988039 -0.0475199901021265 0.00539792334564894" fullinertia="0.000270844704954446 5.3237856887236e-05 0.000320225087552249 1.92101064633156e-05 6.17746910174443e-21 -6.01960096829174e-20" />
+        <joint name="left_rear2_joint" pos="0 0 0" axis="0 0 -1" damping="0.002" />
+        <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.13 0.63 0.36 1" mesh="left_rear2_link" />
+        <geom type="mesh" rgba="0 0 0 0" mesh="left_rear2_link" contype="0" conaffinity="0" />
+        <body name="left_rear3_link" pos="0.0097547 -0.10957 0.0187" quat="1.349243573125132e-11 -3.673205103321794e-06 0.9999999999865075 -3.673205103321794e-06">
+          <inertial mass="0.3000959589920089" pos="-0.0929559044198896 0.0109305546029096 -0.00112275290396431" fullinertia="7.09417340297003e-05 0.000629378119502233 0.000682863303550594 4.42391789736566e-05 -2.70074667048919e-12 -2.43892498611771e-11" />
+          <joint name="left_rear3_joint" pos="0 0 0" axis="0 0 -1" damping="0.002" />
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.61 0.65 0.68 1" mesh="left_rear3_link" />
+          <geom type="mesh" rgba="0 0 0 0" mesh="left_rear3_link" contype="0" conaffinity="0" />
+          <body name="left_rear4_link" pos="-0.1312 0.014528 -0.0546" quat="1.349243573125132e-11 -3.673205103321794e-06 0.9999999999865075 -3.673205103321794e-06">
+            <inertial mass="0.45" pos="2.30338276414055E-05 2.52058952544543E-05 -0.0409315231198923" fullinertia="0.00042 0.00042 0.0007 0 0 0" />
+            <joint name="left_rear4_joint" pos="0 0 0" axis="0 0 -1" damping="0.005" armature="0.0001" />
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.61 0.65 0.68 1" mesh="left_rear4_link" />
+            <geom type="mesh" rgba="0 0 0 0" mesh="left_rear4_link" contype="0" conaffinity="0" />
+            <geom name="left_tire" type="cylinder" pos="-1.50035309309925e-12 -7.71602039743674e-18 -0.0277998932698792" size="0.052 0.01" mass="0" contype="2" conaffinity="1" group="0" rgba="0.09 0.10 0.11 1" condim="4" friction="0.9 0.002 0.0001" solref="0.008 1" />
+          </body>
+          <site name="left_front5_rear3_closure_anchor1" pos="0.0341033252626994 0.01153245277473615 0.002549809897196081" type="sphere" size="0.002" rgba="0.95 0.1 0.3 1" />
+          <geom name="left_rear3_link_ground_collision" type="capsule" fromto="0 0 0 -0.1312 0.014528 -0.0546" size="0.004" contype="2" conaffinity="1" group="0" rgba="0 0 0 0" mass="0" />
+        </body>
+        <site name="left_front4_rear2_closure_anchor1" pos="0.004433847325467447 -0.04980311369212832 0.01399997093880095" type="sphere" size="0.002" rgba="0.95 0.1 0.3 1" />
+        <geom name="left_rear2_link_ground_collision" type="capsule" fromto="0 0 0 0.0097547 -0.10957 0.0187" size="0.004" contype="2" conaffinity="1" group="0" rgba="0 0 0 0" mass="0" />
+      </body>
+      <body name="left_front2_link" pos="-0.00054383 0.068778 0.0825" quat="1.349243573125132e-11 -3.673205103321794e-06 0.9999999999865075 -3.673205103321794e-06">
+        <inertial mass="0.19917644691969863" pos="-0.0106040903463385 0.00306030103924737 -0.0123369894265085" fullinertia="2.57330801733667e-05 3.91685237773071e-05 6.3498150231673e-05 4.23182919976448e-06 1.62284161640722e-08 -4.68345944311971e-09" />
+        <joint name="left_front2_joint" pos="0 0 0" axis="0 0 -1" damping="0.002" />
+        <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.10 0.55 0.72 1" mesh="left_front2_link" />
+        <geom type="mesh" rgba="0 0 0 0" mesh="left_front2_link" contype="0" conaffinity="0" />
+        <body name="left_front3_link" pos="-0.048039 0.013864 -0.0335" quat="1.349243573125132e-11 -3.673205103321794e-06 0.9999999999865075 -3.673205103321794e-06">
+          <inertial mass="0.04646776264947729" pos="0.0133937328937749 -0.0455068923810795 -0.000739603643024139" fullinertia="8.38359856602379e-06 1.2202793068843e-06 9.39214274093775e-06 2.16431774452386e-06 -2.06367237684207e-22 2.0710611223179e-21" />
+          <joint name="left_front3_joint" pos="0 0 0" axis="0 0 1" damping="0.002" />
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.61 0.65 0.68 1" mesh="left_front3_link" />
+          <geom type="mesh" rgba="0 0 0 0" mesh="left_front3_link" contype="0" conaffinity="0" />
+          <body name="left_front4_link" pos="0.016107 -0.057798 0" quat="1.349243573125132e-11 -3.673205103321794e-06 0.9999999999865075 -3.673205103321794e-06">
+            <inertial mass="0.09394027843433847" pos="0.0605844551058147 0.000267669427897022 0.00531738030125994" fullinertia="4.01229678318712e-06 5.50603311668736e-05 5.86108321023169e-05 -1.71448801318724e-06 -3.77172654484319e-19 -9.41595445998186e-21" />
+            <joint name="left_front4_joint" pos="0 0 0" axis="0 0 -1" damping="0.002" />
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.98 0.66 0.12 1" mesh="left_front4_link" />
+            <geom type="mesh" rgba="0 0 0 0" mesh="left_front4_link" contype="0" conaffinity="0" />
+            <body name="left_front5_link" pos="0.092728 0.0057484 0" quat="1 0 0 0">
+              <inertial mass="0.032752117577515706" pos="-0.00200422892382502 -0.0421325735664431 0.000305959708996717" fullinertia="9.54363976571132e-06 4.47748061765396e-07 9.84359159308243e-06 -6.92483167693831e-07 -1.52567479997815e-21 2.08293631811047e-21" />
+              <joint name="left_front5_joint" pos="0 0 0" axis="0 0 -1" damping="0.002" />
+              <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.40 0.28 0.65 1" mesh="left_front5_link" />
+              <geom type="mesh" rgba="0 0 0 0" mesh="left_front5_link" contype="0" conaffinity="0" />
+              <site name="left_front5_rear3_closure_anchor0" pos="-0.004232994398915009 -0.05985213711027684 0.003850190232164619" type="sphere" size="0.002" rgba="0.1 0.95 0.3 1" />
+              <geom name="left_front5_link_ground_collision" type="capsule" fromto="0 0 0 -0.00423299439891501 -0.0598521371102768 0.00385019023216462" size="0.004" contype="2" conaffinity="1" group="0" rgba="0 0 0 0" mass="0" />
+            </body>
+            <site name="left_front4_rear2_closure_anchor0" pos="0.05971209394082701 -0.005869229962859032 0.005999970325243399" type="sphere" size="0.002" rgba="0.1 0.95 0.3 1" />
+            <geom name="left_front4_link_ground_collision" type="capsule" fromto="0 0 0 0.092728 0.0057484 0" size="0.004" contype="2" conaffinity="1" group="0" rgba="0 0 0 0" mass="0" />
+          </body>
+          <geom name="left_front3_link_ground_collision" type="capsule" fromto="0 0 0 0.016107 -0.057798 0" size="0.004" contype="2" conaffinity="1" group="0" rgba="0 0 0 0" mass="0" />
+        </body>
+        <geom name="left_front2_link_ground_collision" type="capsule" fromto="0 0 0 -0.048039 0.013864 -0.0335" size="0.004" contype="2" conaffinity="1" group="0" rgba="0 0 0 0" mass="0" />
+      </body>
+      <body name="right_rear2_link" pos="-0.00054383 0.068778 -0.096" quat="1.349243573125132e-11 -3.673205103321794e-06 0.9999999999865075 -3.673205103321794e-06">
+        <inertial mass="0.36362601044048937" pos="-0.00424484052984289 -0.0475199901021223 0.00539792334565872" fullinertia="0.000270888341239522 5.32464341355908e-05 0.000320276679600952 -1.92132014386525e-05 -3.4821622179648e-19 -1.80724415263283e-19" />
+        <joint name="right_rear2_joint" pos="0 0 0" axis="0 0 1" damping="0.002" />
+        <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.13 0.63 0.36 1" mesh="right_rear2_link" />
+        <geom type="mesh" rgba="0 0 0 0" mesh="right_rear2_link" contype="0" conaffinity="0" />
+        <body name="right_rear3_link" pos="-0.0097547 -0.10957 0.0187" quat="1.349243573125132e-11 -3.673205103321794e-06 0.9999999999865075 -3.673205103321794e-06">
+          <inertial mass="0.30014430800004693" pos="0.0929559044198897 0.01093055460291 -0.00112276585162568" fullinertia="7.09531635820356e-05 0.00062947951976054 0.000682973320904589 -4.42463064285782e-05 2.70117752736859e-12 -2.43931795684604e-11" />
+          <joint name="right_rear3_joint" pos="0 0 0" axis="0 0 1" damping="0.002" />
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.61 0.65 0.68 1" mesh="right_rear3_link" />
+          <geom type="mesh" rgba="0 0 0 0" mesh="right_rear3_link" contype="0" conaffinity="0" />
+          <body name="right_rear4_link" pos="0.1312 0.014528 -0.0546" quat="1.349243573125132e-11 -3.673205103321794e-06 0.9999999999865075 -3.673205103321794e-06">
+            <inertial mass="0.45" pos="2.79811143073239E-05 1.95567584320711E-05 -0.0409315231119988" fullinertia="0.00042 0.00042 0.0007 0 0 0" />
+            <joint name="right_rear4_joint" pos="0 0 0" axis="0 0 -1" damping="0.005" armature="0.0001" />
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.61 0.65 0.68 1" mesh="right_rear4_link" />
+            <geom type="mesh" rgba="0 0 0 0" mesh="right_rear4_link" contype="0" conaffinity="0" />
+            <geom name="right_tire" type="cylinder" pos="-1.50031541013198e-12 -2.04224290232562e-07 -0.027799195045498" size="0.052 0.01" mass="0" contype="2" conaffinity="1" group="0" rgba="0.09 0.10 0.11 1" condim="4" friction="0.9 0.002 0.0001" solref="0.008 1" />
+          </body>
+          <site name="right_front5_rear3_closure_anchor1" pos="-0.03410370560166854 0.011532456464838 0.002549809864657564" type="sphere" size="0.002" rgba="0.95 0.1 0.3 1" />
+          <geom name="right_rear3_link_ground_collision" type="capsule" fromto="0 0 0 0.1312 0.014528 -0.0546" size="0.004" contype="2" conaffinity="1" group="0" rgba="0 0 0 0" mass="0" />
+        </body>
+        <site name="right_front4_rear2_closure_anchor1" pos="-0.004433907943451008 -0.04980306784139243 0.01399997093069907" type="sphere" size="0.002" rgba="0.95 0.1 0.3 1" />
+        <geom name="right_rear2_link_ground_collision" type="capsule" fromto="0 0 0 -0.0097547 -0.10957 0.0187" size="0.004" contype="2" conaffinity="1" group="0" rgba="0 0 0 0" mass="0" />
+      </body>
+      <body name="right_front2_link" pos="-0.00054383 0.068778 -0.0825" quat="1 0 0 0">
+        <inertial mass="0.199125080674774" pos="0.0105884006947785 0.00305577306553287 -0.0123167951224858" fullinertia="2.57369545669653e-05 3.91745627797627e-05 6.35078380711081e-05 -4.23251099749572e-06 1.62310307541539e-08 4.68421400388485e-09" />
+        <joint name="right_front2_joint" pos="0 0 0" axis="0 0 1" damping="0.002" />
+        <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.10 0.55 0.72 1" mesh="right_front2_link" />
+        <geom type="mesh" rgba="0 0 0 0" mesh="right_front2_link" contype="0" conaffinity="0" />
+        <body name="right_front3_link" pos="0.048039 0.013864 -0.0333" quat="1.349243573125132e-11 -3.673205103321794e-06 0.9999999999865075 -3.673205103321794e-06">
+          <inertial mass="0.04639179322952788" pos="-0.0133888523306108 -0.0454847820587269 -0.000547410317772806" fullinertia="8.38467775295419e-06 1.22020439836601e-06 9.39311346268886e-06 -2.16466644170851e-06 -6.85201978424508e-21 -1.31734619922266e-20" />
+          <joint name="right_front3_joint" pos="0 0 0" axis="0 0 -1" damping="0.002" />
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.61 0.65 0.68 1" mesh="right_front3_link" />
+          <geom type="mesh" rgba="0 0 0 0" mesh="right_front3_link" contype="0" conaffinity="0" />
+          <body name="right_front4_link" pos="-0.016107 -0.057798 -0.0018" quat="1.349243573125132e-11 -3.673205103321794e-06 0.9999999999865075 -3.673205103321794e-06">
+            <inertial mass="0.09395541332416618" pos="-0.06058445128137 0.000267675011850654 0.00331738030125958" fullinertia="4.01294321164977e-06 5.50692020373881e-05 5.86202750005216e-05 1.71476423748232e-06 -3.44785511183148e-21 1.72408618012075e-21" />
+            <joint name="right_front4_joint" pos="0 0 0" axis="0 0 1" damping="0.002" />
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.98 0.66 0.12 1" mesh="right_front4_link" />
+            <geom type="mesh" rgba="0 0 0 0" mesh="right_front4_link" contype="0" conaffinity="0" />
+            <body name="right_front5_link" pos="-0.092728 0.0057484 -0.002" quat="1 0 0 0">
+              <inertial mass="0.032757394330995844" pos="0.002004228923825 -0.042132573566443 0.000305959708996703" fullinertia="9.5451773589441e-06 4.47820199273378e-07 9.84517751210191e-06 6.92594734921705e-07 -5.68216579061734e-22 6.82286088878369e-21" />
+              <joint name="right_front5_joint" pos="0 0 0" axis="0 0 1" damping="0.002" />
+              <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.40 0.28 0.65 1" mesh="right_front5_link" />
+              <geom type="mesh" rgba="0 0 0 0" mesh="right_front5_link" contype="0" conaffinity="0" />
+              <site name="right_front5_rear3_closure_anchor0" pos="0.004233374737920702 -0.05985214080037864 0.003850190206495457" type="sphere" size="0.002" rgba="0.1 0.95 0.3 1" />
+              <geom name="right_front5_link_ground_collision" type="capsule" fromto="0 0 0 0.0042333747379207 -0.0598521408003786 0.00385019020649546" size="0.004" contype="2" conaffinity="1" group="0" rgba="0 0 0 0" mass="0" />
+            </body>
+            <site name="right_front4_rear2_closure_anchor0" pos="-0.05971215078921661 -0.005869269670214236 0.00399997033889874" type="sphere" size="0.002" rgba="0.1 0.95 0.3 1" />
+            <geom name="right_front4_link_ground_collision" type="capsule" fromto="0 0 0 -0.092728 0.0057484 -0.002" size="0.004" contype="2" conaffinity="1" group="0" rgba="0 0 0 0" mass="0" />
+          </body>
+          <geom name="right_front3_link_ground_collision" type="capsule" fromto="0 0 0 -0.016107 -0.057798 -0.0018" size="0.004" contype="2" conaffinity="1" group="0" rgba="0 0 0 0" mass="0" />
+        </body>
+        <geom name="right_front2_link_ground_collision" type="capsule" fromto="0 0 0 0.048039 0.013864 -0.0333" size="0.004" contype="2" conaffinity="1" group="0" rgba="0 0 0 0" mass="0" />
+      </body>
+      <body name="left_front1_wheel" pos="-0.060315 0.03963 0.07" quat="1.349243573125132e-11 -3.673205103321794e-06 0.9999999999865075 -3.673205103321794e-06">
+        <inertial mass="0.00932859472049755" pos="-1.07552855510562E-16 -6.93889390390723E-16 -0.0134881822284883" fullinertia="2.20109515239337E-06 2.20109515239337E-06 4.3956078293935E-06 -2.57554074900148E-21 -1.59303559596716E-20 -1.33289672229169E-21" />
+        <joint name="left_front1_joint" pos="0 0 0" axis="0 0 1" damping="0.02" armature="0.00015" />
+        <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.85 0.28 0.09 1" mesh="left_front1_wheel" />
+        <geom type="mesh" rgba="0 0 0 0" mesh="left_front1_wheel" contype="0" conaffinity="0" />
+      </body>
+      <body name="left_rear1_wheel" pos="0.059681 0.040579 0.07" quat="1 0 0 0">
+        <inertial mass="0.00933760843082636" pos="7.21644966006352E-16 -1.11022302462516E-16 0.0269701449622776" fullinertia="2.20208891234687E-06 2.20208891234687E-06 4.39720795558203E-06 -3.33544418931112E-21 1.67928790413981E-22 -8.67589938873464E-22" />
+        <joint name="left_rear1_joint" pos="0 0 0" axis="0 0 -1" damping="0.02" armature="0.00015" />
+        <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.85 0.28 0.09 1" mesh="left_rear1_wheel" />
+        <geom type="mesh" rgba="0 0 0 0" mesh="left_rear1_wheel" contype="0" conaffinity="0" />
+      </body>
+      <body name="right_front1_wheel" pos="-0.060315 0.03963 -0.07" quat="1 0 0 0">
+        <inertial mass="0.00932859472049754" pos="1.97758476261356E-16 -7.49400541621981E-16 -0.0134881822284883" fullinertia="2.20109515239337E-06 2.20109515239337E-06 4.3956078293935E-06 2.51977179104788E-21 6.57097168399722E-22 -1.32633999372042E-21" />
+        <joint name="right_front1_joint" pos="0 0 0" axis="0 0 1" damping="0.02" armature="0.00015" />
+        <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.85 0.28 0.09 1" mesh="right_front1_wheel" />
+        <geom type="mesh" rgba="0 0 0 0" mesh="right_front1_wheel" contype="0" conaffinity="0" />
+      </body>
+      <body name="right_rear1_wheel" pos="0.059681 0.040579 -0.07" quat="1.349243573125132e-11 -3.673205103321794e-06 0.9999999999865075 -3.673205103321794e-06">
+        <inertial mass="0.00933760843082636" pos="-1.66533453693773E-16 -4.9960036108132E-16 0.0269701449622736" fullinertia="2.20208891234687E-06 2.20208891234687E-06 4.39720795558203E-06 3.76452635016975E-21 -1.516487377585E-20 8.70489805981917E-22" />
+        <joint name="right_rear1_joint" pos="0 0 0" axis="0 0 -1" damping="0.02" armature="0.00015" />
+        <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.85 0.28 0.09 1" mesh="right_rear1_wheel" />
+        <geom type="mesh" rgba="0 0 0 0" mesh="right_rear1_wheel" contype="0" conaffinity="0" />
+      </body>
+      <geom name="left_front_timing_belt_display_0" type="capsule" fromto="-0.07249807090198251 0.0646128693868686 0.0792499999997504 -0.01272690090130789 0.09376077755674103 0.07925000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_front_timing_belt_display_1" type="capsule" fromto="-0.04813192909901593 0.01464726652172021 0.0792499999997504 0.01163924090165869 0.04379517469159264 0.07925000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_front_timing_belt_display_2" type="capsule" fromto="-0.04813192909901593 0.01464726652172021 0.0792499999997504 -0.05149706690145438 0.01327078799692893 0.0792499999997504" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_front_timing_belt_display_3" type="capsule" fromto="-0.05149706690145438 0.01327078799692893 0.0792499999997504 -0.05501308198401041 0.01234532406038125 0.0792499999997504" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_front_timing_belt_display_4" type="capsule" fromto="-0.05501308198401041 0.01234532406038125 0.0792499999997504 -0.05861981435379796 0.01188670965661858 0.0792499999997504" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_front_timing_belt_display_5" type="capsule" fromto="-0.05861981435379796 0.01188670965661858 0.0792499999997504 -0.0622555518199948 0.01190279180524124 0.0792499999997504" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_front_timing_belt_display_6" type="capsule" fromto="-0.0622555518199948 0.01190279180524124 0.0792499999997504 -0.06585808590653748 0.01239329533622749 0.0792499999997504" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_front_timing_belt_display_7" type="capsule" fromto="-0.06585808590653748 0.01239329533622749 0.0792499999997504 -0.06936577625639409 0.01334982759816886 0.0792499999997504" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_front_timing_belt_display_8" type="capsule" fromto="-0.06936577625639409 0.01334982759816886 0.0792499999997504 -0.07271860531516308 0.01475602205886271 0.0792499999997504" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_front_timing_belt_display_9" type="capsule" fromto="-0.07271860531516308 0.01475602205886271 0.0792499999997504 -0.07585920524806909 0.0165878183412158 0.0792499999997504" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_front_timing_belt_display_10" type="capsule" fromto="-0.07585920524806909 0.0165878183412158 0.0792499999997504 -0.07873383951952129 0.01881387390296719 0.0792499999997504" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_front_timing_belt_display_11" type="capsule" fromto="-0.07873383951952129 0.01881387390296719 0.0792499999997504 -0.08129332234013595 0.02139610031627611 0.0792499999997504" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_front_timing_belt_display_12" type="capsule" fromto="-0.08129332234013595 0.02139610031627611 0.0792499999997504 -0.08349386024922964 0.02429031497128244 0.0792499999997504" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_front_timing_belt_display_13" type="capsule" fromto="-0.08349386024922964 0.02429031497128244 0.0792499999997504 -0.08529780143307342 0.02744699705281112 0.0792499999997504" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_front_timing_belt_display_14" type="capsule" fromto="-0.08529780143307342 0.02744699705281112 0.0792499999997504 -0.0866742799578647 0.03081213485524956 0.0792499999997504" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_front_timing_belt_display_15" type="capsule" fromto="-0.0866742799578647 0.03081213485524956 0.0792499999997504 -0.08759974389441237 0.03432814993780559 0.0792499999997504" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_front_timing_belt_display_16" type="capsule" fromto="-0.08759974389441237 0.03432814993780559 0.0792499999997504 -0.08805835829817504 0.03793488230759313 0.0792499999997504" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_front_timing_belt_display_17" type="capsule" fromto="-0.08805835829817504 0.03793488230759313 0.0792499999997504 -0.08804227614955237 0.04157061977378999 0.0792499999997504" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_front_timing_belt_display_18" type="capsule" fromto="-0.08804227614955237 0.04157061977378999 0.0792499999997504 -0.08755177261856614 0.04517315386033266 0.0792499999997504" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_front_timing_belt_display_19" type="capsule" fromto="-0.08755177261856614 0.04517315386033266 0.0792499999997504 -0.08659524035662476 0.04868084421018927 0.0792499999997504" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_front_timing_belt_display_20" type="capsule" fromto="-0.08659524035662476 0.04868084421018927 0.0792499999997504 -0.08518904589593092 0.05203367326895826 0.0792499999997504" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_front_timing_belt_display_21" type="capsule" fromto="-0.08518904589593092 0.05203367326895826 0.0792499999997504 -0.08335724961357782 0.05517427320186427 0.0792499999997504" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_front_timing_belt_display_22" type="capsule" fromto="-0.08335724961357782 0.05517427320186427 0.0792499999997504 -0.08113119405182644 0.05804890747331648 0.0792499999997504" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_front_timing_belt_display_23" type="capsule" fromto="-0.08113119405182644 0.05804890747331648 0.0792499999997504 -0.07854896763851751 0.06060839029393113 0.0792499999997504" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_front_timing_belt_display_24" type="capsule" fromto="-0.07854896763851751 0.06060839029393113 0.0792499999997504 -0.07565475298351119 0.06280892820302483 0.0792499999997504" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_front_timing_belt_display_25" type="capsule" fromto="-0.07565475298351119 0.06280892820302483 0.0792499999997504 -0.07249807090198251 0.0646128693868686 0.0792499999997504" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_front_timing_belt_display_26" type="capsule" fromto="0.01163924090165869 0.04379517469159264 0.07925000000008771 0.01479592298318736 0.04559911587543641 0.07925000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_front_timing_belt_display_27" type="capsule" fromto="0.01479592298318736 0.04559911587543641 0.07925000000008771 0.01769013763819369 0.0477996537845301 0.07925000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_front_timing_belt_display_28" type="capsule" fromto="0.01769013763819369 0.0477996537845301 0.07925000000008771 0.02027236405150262 0.05035913660514476 0.07925000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_front_timing_belt_display_29" type="capsule" fromto="0.02027236405150262 0.05035913660514476 0.07925000000008771 0.02249841961325401 0.05323377087659696 0.07925000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_front_timing_belt_display_30" type="capsule" fromto="0.02249841961325401 0.05323377087659696 0.07925000000008771 0.02433021589560709 0.05637437080950297 0.07925000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_front_timing_belt_display_31" type="capsule" fromto="0.02433021589560709 0.05637437080950297 0.07925000000008771 0.02573641035630094 0.05972719986827197 0.07925000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_front_timing_belt_display_32" type="capsule" fromto="0.02573641035630094 0.05972719986827197 0.07925000000008771 0.02669294261824232 0.06323489021812857 0.07925000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_front_timing_belt_display_33" type="capsule" fromto="0.02669294261824232 0.06323489021812857 0.07925000000008771 0.02718344614922856 0.06683742430467125 0.07925000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_front_timing_belt_display_34" type="capsule" fromto="0.02718344614922856 0.06683742430467125 0.07925000000008771 0.02719952829785122 0.0704731617708681 0.07925000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_front_timing_belt_display_35" type="capsule" fromto="0.02719952829785122 0.0704731617708681 0.07925000000008771 0.02674091389408856 0.07407989414065563 0.07925000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_front_timing_belt_display_36" type="capsule" fromto="0.02674091389408856 0.07407989414065563 0.07925000000008771 0.02581544995754088 0.07759590922321168 0.07925000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_front_timing_belt_display_37" type="capsule" fromto="0.02581544995754088 0.07759590922321168 0.07925000000008771 0.02443897143274959 0.08096104702565013 0.07925000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_front_timing_belt_display_38" type="capsule" fromto="0.02443897143274959 0.08096104702565013 0.07925000000008771 0.02263503024890583 0.0841177291071788 0.07925000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_front_timing_belt_display_39" type="capsule" fromto="0.02263503024890583 0.0841177291071788 0.07925000000008771 0.02043449233981214 0.08701194376218513 0.07925000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_front_timing_belt_display_40" type="capsule" fromto="0.02043449233981214 0.08701194376218513 0.07925000000008771 0.01787500951919748 0.08959417017549404 0.07925000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_front_timing_belt_display_41" type="capsule" fromto="0.01787500951919748 0.08959417017549404 0.07925000000008771 0.01500037524774528 0.09182022573724544 0.07925000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_front_timing_belt_display_42" type="capsule" fromto="0.01500037524774528 0.09182022573724544 0.07925000000008771 0.01185977531483927 0.09365202201959852 0.07925000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_front_timing_belt_display_43" type="capsule" fromto="0.01185977531483927 0.09365202201959852 0.07925000000008771 0.008506946256070269 0.09505821648029238 0.07925000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_front_timing_belt_display_44" type="capsule" fromto="0.008506946256070269 0.09505821648029238 0.07925000000008771 0.004999255906213667 0.09601474874223376 0.07925000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_front_timing_belt_display_45" type="capsule" fromto="0.004999255906213667 0.09601474874223376 0.07925000000008771 0.001396721819670998 0.09650525227321999 0.07925000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_front_timing_belt_display_46" type="capsule" fromto="0.001396721819670998 0.09650525227321999 0.07925000000008771 -0.002239015646525865 0.09652133442184266 0.07925000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_front_timing_belt_display_47" type="capsule" fromto="-0.002239015646525865 0.09652133442184266 0.07925000000008771 -0.005845748016313402 0.09606272001808 0.07925000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_front_timing_belt_display_48" type="capsule" fromto="-0.005845748016313402 0.09606272001808 0.07925000000008771 -0.009361763098869434 0.09513725608153231 0.07925000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_front_timing_belt_display_49" type="capsule" fromto="-0.009361763098869434 0.09513725608153231 0.07925000000008771 -0.01272690090130789 0.09376077755674103 0.07925000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_rear_timing_belt_display_0" type="capsule" fromto="0.04789457537723774 0.01540663859662857 0.09275 -0.01233025462276226 0.04360563859662858 0.09275" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_rear_timing_belt_display_1" type="capsule" fromto="0.07146742462276226 0.06575136140337143 0.09275 0.01124259462276226 0.09395036140337143 0.09275" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_rear_timing_belt_display_2" type="capsule" fromto="0.07146742462276226 0.06575136140337143 0.09275 0.07465224260937646 0.06399757123611922 0.09275" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_rear_timing_belt_display_3" type="capsule" fromto="0.07465224260937646 0.06399757123611922 0.09275 0.07758089848413159 0.06184308282216243 0.09275" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_rear_timing_belt_display_4" type="capsule" fromto="0.07758089848413159 0.06184308282216243 0.09275 0.08020328213303379 0.05932476005560088 0.09275" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_rear_timing_belt_display_5" type="capsule" fromto="0.08020328213303379 0.05932476005560088 0.09275 0.08247452384478825 0.05648569213718143 0.09275" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_rear_timing_belt_display_6" type="capsule" fromto="0.08247452384478825 0.05648569213718143 0.09275 0.08435576204399965 0.05337445630612656 0.09275" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_rear_timing_belt_display_7" type="capsule" fromto="0.08435576204399965 0.05337445630612656 0.09275 0.08581480822350174 0.05004428667010316 0.09275" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_rear_timing_belt_display_8" type="capsule" fromto="0.08581480822350174 0.05004428667010316 0.09275 0.08682669769863921 0.04655216335488106 0.09275" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_rear_timing_belt_display_9" type="capsule" fromto="0.08682669769863921 0.04655216335488106 0.09275 0.08737411675994369 0.04295783755858318 0.09275" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_rear_timing_belt_display_10" type="capsule" fromto="0.08737411675994369 0.04295783755858318 0.09275 0.08744769891550302 0.03932280919211957 0.09275" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_rear_timing_belt_display_11" type="capsule" fromto="0.08744769891550302 0.03932280919211957 0.09275 0.08704618515423476 0.03570927459866069 0.09275" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_rear_timing_belt_display_12" type="capsule" fromto="0.08704618515423476 0.03570927459866069 0.09275 0.08617644548791485 0.03217906235696168 0.09275" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_rear_timing_belt_display_13" type="capsule" fromto="0.08617644548791485 0.03217906235696168 0.09275 0.08485336140337142 0.02879257537723774 0.09275" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_rear_timing_belt_display_14" type="capsule" fromto="0.08485336140337142 0.02879257537723774 0.09275 0.08309957123611922 0.02560775739062354 0.09275" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_rear_timing_belt_display_15" type="capsule" fromto="0.08309957123611922 0.02560775739062354 0.09275 0.08094508282216242 0.0226791015158684 0.09275" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_rear_timing_belt_display_16" type="capsule" fromto="0.08094508282216242 0.0226791015158684 0.09275 0.07842676005560088 0.0200567178669662 0.09275" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_rear_timing_belt_display_17" type="capsule" fromto="0.07842676005560088 0.0200567178669662 0.09275 0.07558769213718143 0.01778547615521175 0.09275" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_rear_timing_belt_display_18" type="capsule" fromto="0.07558769213718143 0.01778547615521175 0.09275 0.07247645630612656 0.01590423795600035 0.09275" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_rear_timing_belt_display_19" type="capsule" fromto="0.07247645630612656 0.01590423795600035 0.09275 0.06914628667010317 0.01444519177649826 0.09275" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_rear_timing_belt_display_20" type="capsule" fromto="0.06914628667010317 0.01444519177649826 0.09275 0.06565416335488106 0.01343330230136079 0.09275" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_rear_timing_belt_display_21" type="capsule" fromto="0.06565416335488106 0.01343330230136079 0.09275 0.06205983755858319 0.01288588324005631 0.09275" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_rear_timing_belt_display_22" type="capsule" fromto="0.06205983755858319 0.01288588324005631 0.09275 0.05842480919211957 0.01281230108449697 0.09275" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_rear_timing_belt_display_23" type="capsule" fromto="0.05842480919211957 0.01281230108449697 0.09275 0.05481127459866069 0.01321381484576523 0.09275" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_rear_timing_belt_display_24" type="capsule" fromto="0.05481127459866069 0.01321381484576523 0.09275 0.05128106235696168 0.01408355451208514 0.09275" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_rear_timing_belt_display_25" type="capsule" fromto="0.05128106235696168 0.01408355451208514 0.09275 0.04789457537723774 0.01540663859662857 0.09275" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_rear_timing_belt_display_26" type="capsule" fromto="0.01124259462276226 0.09395036140337143 0.09275 0.007856107643038322 0.09527344548791486 0.09275" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_rear_timing_belt_display_27" type="capsule" fromto="0.007856107643038322 0.09527344548791486 0.09275 0.004325895401339311 0.09614318515423477 0.09275" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_rear_timing_belt_display_28" type="capsule" fromto="0.004325895401339311 0.09614318515423477 0.09275 0.000712360807880425 0.09654469891550303 0.09275" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_rear_timing_belt_display_29" type="capsule" fromto="0.000712360807880425 0.09654469891550303 0.09275 -0.002922667558583177 0.09647111675994369 0.09275" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_rear_timing_belt_display_30" type="capsule" fromto="-0.002922667558583177 0.09647111675994369 0.09275 -0.006516993354881057 0.09592369769863922 0.09275" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_rear_timing_belt_display_31" type="capsule" fromto="-0.006516993354881057 0.09592369769863922 0.09275 -0.01000911667010317 0.09491180822350175 0.09275" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_rear_timing_belt_display_32" type="capsule" fromto="-0.01000911667010317 0.09491180822350175 0.09275 -0.01333928630612656 0.09345276204399966 0.09275" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_rear_timing_belt_display_33" type="capsule" fromto="-0.01333928630612656 0.09345276204399966 0.09275 -0.01645052213718143 0.09157152384478826 0.09275" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_rear_timing_belt_display_34" type="capsule" fromto="-0.01645052213718143 0.09157152384478826 0.09275 -0.01928959005560088 0.0893002821330338 0.09275" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_rear_timing_belt_display_35" type="capsule" fromto="-0.01928959005560088 0.0893002821330338 0.09275 -0.02180791282216243 0.0866778984841316 0.09275" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_rear_timing_belt_display_36" type="capsule" fromto="-0.02180791282216243 0.0866778984841316 0.09275 -0.02396240123611922 0.08374924260937647 0.09275" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_rear_timing_belt_display_37" type="capsule" fromto="-0.02396240123611922 0.08374924260937647 0.09275 -0.02571619140337143 0.08056442462276227 0.09275" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_rear_timing_belt_display_38" type="capsule" fromto="-0.02571619140337143 0.08056442462276227 0.09275 -0.02703927548791485 0.07717793764303833 0.09275" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_rear_timing_belt_display_39" type="capsule" fromto="-0.02703927548791485 0.07717793764303833 0.09275 -0.02790901515423476 0.07364772540133932 0.09275" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_rear_timing_belt_display_40" type="capsule" fromto="-0.02790901515423476 0.07364772540133932 0.09275 -0.02831052891550302 0.07003419080788044 0.09275" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_rear_timing_belt_display_41" type="capsule" fromto="-0.02831052891550302 0.07003419080788044 0.09275 -0.02823694675994369 0.06639916244141683 0.09275" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_rear_timing_belt_display_42" type="capsule" fromto="-0.02823694675994369 0.06639916244141683 0.09275 -0.02768952769863921 0.06280483664511896 0.09275" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_rear_timing_belt_display_43" type="capsule" fromto="-0.02768952769863921 0.06280483664511896 0.09275 -0.02667763822350174 0.05931271332989684 0.09275" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_rear_timing_belt_display_44" type="capsule" fromto="-0.02667763822350174 0.05931271332989684 0.09275 -0.02521859204399966 0.05598254369387345 0.09275" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_rear_timing_belt_display_45" type="capsule" fromto="-0.02521859204399966 0.05598254369387345 0.09275 -0.02333735384478825 0.05287130786281858 0.09275" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_rear_timing_belt_display_46" type="capsule" fromto="-0.02333735384478825 0.05287130786281858 0.09275 -0.0210661121330338 0.05003223994439912 0.09275" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_rear_timing_belt_display_47" type="capsule" fromto="-0.0210661121330338 0.05003223994439912 0.09275 -0.0184437284841316 0.04751391717783758 0.09275" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_rear_timing_belt_display_48" type="capsule" fromto="-0.0184437284841316 0.04751391717783758 0.09275 -0.01551507260937647 0.04535942876388079 0.09275" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="left_rear_timing_belt_display_49" type="capsule" fromto="-0.01551507260937647 0.04535942876388079 0.09275 -0.01233025462276226 0.04360563859662858 0.09275" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_front_timing_belt_display_0" type="capsule" fromto="-0.0724981019100376 0.06461278631097096 -0.07925 -0.0127269319100376 0.09376078631097097 -0.07925" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_front_timing_belt_display_1" type="capsule" fromto="-0.0481318980899624 0.01464721368902903 -0.07925 0.0116392719100376 0.04379521368902904 -0.07925" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_front_timing_belt_display_2" type="capsule" fromto="-0.0481318980899624 0.01464721368902903 -0.07925 -0.05149703418391804 0.01327073098744182 -0.07925" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_front_timing_belt_display_3" type="capsule" fromto="-0.05149703418391804 0.01327073098744182 -0.07925 -0.05501304811778884 0.01234526268682952 -0.07925" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_front_timing_belt_display_4" type="capsule" fromto="-0.05501304811778884 0.01234526268682952 -0.07925 -0.05861977991834305 0.0118866438064039 -0.07925" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_front_timing_belt_display_5" type="capsule" fromto="-0.05861977991834305 0.0118866438064039 -0.07925 -0.0622555174044982 0.01190272144236222 -0.07925" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_front_timing_belt_display_6" type="capsule" fromto="-0.0622555174044982 0.01190272144236222 -0.07925 -0.06585805209984934 0.01239322050189568 -0.07925" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_front_timing_belt_display_7" type="capsule" fromto="-0.06585805209984934 0.01239322050189568 -0.07925 -0.06936574363694765 0.01334974841010361 -0.07925" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_front_timing_belt_display_8" type="capsule" fromto="-0.06936574363694765 0.01334974841010361 -0.07925 -0.0727185744410776 0.01475593870927695 -0.07925" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_front_timing_belt_display_9" type="capsule" fromto="-0.0727185744410776 0.01475593870927695 -0.07925 -0.07585917664760018 0.01658773109352724 -0.07925" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_front_timing_belt_display_10" type="capsule" fromto="-0.07585917664760018 0.01658773109352724 -0.07925 -0.07873381368202237 0.01881378308729115 -0.07925" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_front_timing_belt_display_11" type="capsule" fromto="-0.07873381368202237 0.01881378308729115 -0.07925 -0.08129329970768523 0.02139600632377717 -0.07925" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_front_timing_belt_display_12" type="capsule" fromto="-0.08129329970768523 0.02139600632377717 -0.07925 -0.08349384120906608 0.0242902182474815 -0.07925" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_front_timing_belt_display_13" type="capsule" fromto="-0.08349384120906608 0.0242902182474815 -0.07925 -0.08529778631097096 0.0274468980899624 -0.07925" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_front_timing_belt_display_14" type="capsule" fromto="-0.08529778631097096 0.0274468980899624 -0.07925 -0.08667426901255817 0.03081203418391804 -0.07925" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_front_timing_belt_display_15" type="capsule" fromto="-0.08667426901255817 0.03081203418391804 -0.07925 -0.08759973731317049 0.03432804811778883 -0.07925" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_front_timing_belt_display_16" type="capsule" fromto="-0.08759973731317049 0.03432804811778883 -0.07925 -0.0880583561935961 0.03793477991834304 -0.07925" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_front_timing_belt_display_17" type="capsule" fromto="-0.0880583561935961 0.03793477991834304 -0.07925 -0.08804227855763777 0.0415705174044982 -0.07925" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_front_timing_belt_display_18" type="capsule" fromto="-0.08804227855763777 0.0415705174044982 -0.07925 -0.08755177949810433 0.04517305209984933 -0.07925" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_front_timing_belt_display_19" type="capsule" fromto="-0.08755177949810433 0.04517305209984933 -0.07925 -0.08659525158989639 0.04868074363694765 -0.07925" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_front_timing_belt_display_20" type="capsule" fromto="-0.08659525158989639 0.04868074363694765 -0.07925 -0.08518906129072305 0.05203357444107759 -0.07925" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_front_timing_belt_display_21" type="capsule" fromto="-0.08518906129072305 0.05203357444107759 -0.07925 -0.08335726890647277 0.05517417664760017 -0.07925" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_front_timing_belt_display_22" type="capsule" fromto="-0.08335726890647277 0.05517417664760017 -0.07925 -0.08113121691270885 0.05804881368202236 -0.07925" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_front_timing_belt_display_23" type="capsule" fromto="-0.08113121691270885 0.05804881368202236 -0.07925 -0.07854899367622283 0.06060829970768522 -0.07925" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_front_timing_belt_display_24" type="capsule" fromto="-0.07854899367622283 0.06060829970768522 -0.07925 -0.07565478175251851 0.06280884120906609 -0.07925" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_front_timing_belt_display_25" type="capsule" fromto="-0.07565478175251851 0.06280884120906609 -0.07925 -0.0724981019100376 0.06461278631097096 -0.07925" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_front_timing_belt_display_26" type="capsule" fromto="0.0116392719100376 0.04379521368902904 -0.07925 0.0147959517525185 0.04559915879093392 -0.07925" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_front_timing_belt_display_27" type="capsule" fromto="0.0147959517525185 0.04559915879093392 -0.07925 0.01769016367622283 0.04779970029231478 -0.07925" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_front_timing_belt_display_28" type="capsule" fromto="0.01769016367622283 0.04779970029231478 -0.07925 0.02027238691270885 0.05035918631797764 -0.07925" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_front_timing_belt_display_29" type="capsule" fromto="0.02027238691270885 0.05035918631797764 -0.07925 0.02249843890647276 0.05323382335239982 -0.07925" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_front_timing_belt_display_30" type="capsule" fromto="0.02249843890647276 0.05323382335239982 -0.07925 0.02433023129072305 0.05637442555892241 -0.07925" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_front_timing_belt_display_31" type="capsule" fromto="0.02433023129072305 0.05637442555892241 -0.07925 0.02573642158989639 0.05972725636305235 -0.07925" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_front_timing_belt_display_32" type="capsule" fromto="0.02573642158989639 0.05972725636305235 -0.07925 0.02669294949810432 0.06323494790015068 -0.07925" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_front_timing_belt_display_33" type="capsule" fromto="0.02669294949810432 0.06323494790015068 -0.07925 0.02718344855763778 0.0668374825955018 -0.07925" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_front_timing_belt_display_34" type="capsule" fromto="0.02718344855763778 0.0668374825955018 -0.07925 0.0271995261935961 0.07047322008165696 -0.07925" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_front_timing_belt_display_35" type="capsule" fromto="0.0271995261935961 0.07047322008165696 -0.07925 0.02674090731317048 0.07407995188221116 -0.07925" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_front_timing_belt_display_36" type="capsule" fromto="0.02674090731317048 0.07407995188221116 -0.07925 0.02581543901255818 0.07759596581608197 -0.07925" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_front_timing_belt_display_37" type="capsule" fromto="0.02581543901255818 0.07759596581608197 -0.07925 0.02443895631097097 0.08096110191003761 -0.07925" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_front_timing_belt_display_38" type="capsule" fromto="0.02443895631097097 0.08096110191003761 -0.07925 0.02263501120906609 0.08411778175251849 -0.07925" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_front_timing_belt_display_39" type="capsule" fromto="0.02263501120906609 0.08411778175251849 -0.07925 0.02043446970768523 0.08701199367622284 -0.07925" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_front_timing_belt_display_40" type="capsule" fromto="0.02043446970768523 0.08701199367622284 -0.07925 0.01787498368202237 0.08959421691270886 -0.07925" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_front_timing_belt_display_41" type="capsule" fromto="0.01787498368202237 0.08959421691270886 -0.07925 0.01500034664760018 0.09182026890647277 -0.07925" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_front_timing_belt_display_42" type="capsule" fromto="0.01500034664760018 0.09182026890647277 -0.07925 0.01185974444107761 0.09365206129072305 -0.07925" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_front_timing_belt_display_43" type="capsule" fromto="0.01185974444107761 0.09365206129072305 -0.07925 0.008506913636947659 0.09505825158989639 -0.07925" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_front_timing_belt_display_44" type="capsule" fromto="0.008506913636947659 0.09505825158989639 -0.07925 0.00499922209984934 0.09601477949810433 -0.07925" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_front_timing_belt_display_45" type="capsule" fromto="0.00499922209984934 0.09601477949810433 -0.07925 0.001396687404498218 0.09650527855763778 -0.07925" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_front_timing_belt_display_46" type="capsule" fromto="0.001396687404498218 0.09650527855763778 -0.07925 -0.002239050081656949 0.09652135619359611 -0.07925" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_front_timing_belt_display_47" type="capsule" fromto="-0.002239050081656949 0.09652135619359611 -0.07925 -0.005845781882211153 0.09606273731317048 -0.07925" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_front_timing_belt_display_48" type="capsule" fromto="-0.005845781882211153 0.09606273731317048 -0.07925 -0.009361795816081953 0.09513726901255819 -0.07925" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_front_timing_belt_display_49" type="capsule" fromto="-0.009361795816081953 0.09513726901255819 -0.07925 -0.0127269319100376 0.09376078631097097 -0.07925" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_rear_timing_belt_display_0" type="capsule" fromto="0.04789450989886131 0.01540650212533686 -0.0927499999993861 -0.0123303201025419 0.04360569313200223 -0.09275000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_rear_timing_belt_display_1" type="capsule" fromto="0.07146749010359431 0.06575116361299875 -0.0927499999993861 0.0112426601021911 0.09395035461966413 -0.09275000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_rear_timing_belt_display_2" type="capsule" fromto="0.07146749010359431 0.06575116361299875 -0.0927499999993861 0.07465230352814835 0.06399736516123974 -0.0927499999993861" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_rear_timing_belt_display_3" type="capsule" fromto="0.07465230352814835 0.06399736516123974 -0.0927499999993861 0.07758095379852724 0.06184286912911962 -0.0927499999993861" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_rear_timing_belt_display_4" type="capsule" fromto="0.07758095379852724 0.06184286912911962 -0.0927499999993861 0.08020333089662957 0.05932453954108706 -0.0927499999993861" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_rear_timing_belt_display_5" type="capsule" fromto="0.08020333089662957 0.05932453954108706 -0.0927499999993861 0.08247456522324652 0.05648546571460619 -0.0927499999993861" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_rear_timing_belt_display_6" type="capsule" fromto="0.08247456522324652 0.05648546571460619 -0.0927499999993861 0.08435579532934454 0.05337422498998806 -0.0927499999993861" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_rear_timing_belt_display_7" type="capsule" fromto="0.08435579532934454 0.05337422498998806 -0.0927499999993861 0.08581483284623276 0.05004405155862979 -0.0927499999993861" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_rear_timing_belt_display_8" type="capsule" fromto="0.08581483284623276 0.05004405155862979 -0.0927499999993861 0.08682671323747561 0.04655192561124043 -0.0927499999993861" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_rear_timing_belt_display_9" type="capsule" fromto="0.08682671323747561 0.04655192561124043 -0.0927499999993861 0.08737412294903268 0.04295759839098004 -0.0927499999993861" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_rear_timing_belt_display_10" type="capsule" fromto="0.08737412294903268 0.04295759839098004 -0.0927499999993861 0.08744769564896861 0.03932256983312304 -0.0927499999993861" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_rear_timing_belt_display_11" type="capsule" fromto="0.08744769564896861 0.03932256983312304 -0.0927499999993861 0.08704617248798924 0.03570903628411468 -0.0927499999993861" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_rear_timing_belt_display_12" type="capsule" fromto="0.08704617248798924 0.03570903628411468 -0.0927499999993861 0.0861764236387022 0.03217882630483926 -0.0927499999993861" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_rear_timing_belt_display_13" type="capsule" fromto="0.0861764236387022 0.03217882630483926 -0.0927499999993861 0.08485333074505876 0.02879234276680131 -0.0927499999993861" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_rear_timing_belt_display_14" type="capsule" fromto="0.08485333074505876 0.02879234276680131 -0.0927499999993861 0.08309953229329976 0.02560752934224727 -0.0927499999993861" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_rear_timing_belt_display_15" type="capsule" fromto="0.08309953229329976 0.02560752934224727 -0.0927499999993861 0.08094503626117963 0.02267887907186837 -0.0927499999993861" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_rear_timing_belt_display_16" type="capsule" fromto="0.08094503626117963 0.02267887907186837 -0.0927499999993861 0.07842670667314706 0.02005650197376604 -0.0927499999993861" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_rear_timing_belt_display_17" type="capsule" fromto="0.07842670667314706 0.02005650197376604 -0.0927499999993861 0.0755876328466662 0.0177852676471491 -0.0927499999993861" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_rear_timing_belt_display_18" type="capsule" fromto="0.0755876328466662 0.0177852676471491 -0.0927499999993861 0.07247639212204808 0.01590403754105109 -0.0927499999993861" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_rear_timing_belt_display_19" type="capsule" fromto="0.07247639212204808 0.01590403754105109 -0.0927499999993861 0.06914621869068981 0.01444500002416286 -0.0927499999993861" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_rear_timing_belt_display_20" type="capsule" fromto="0.06914621869068981 0.01444500002416286 -0.0927499999993861 0.06565409274330045 0.01343311963292 -0.0927499999993861" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_rear_timing_belt_display_21" type="capsule" fromto="0.06565409274330045 0.01343311963292 -0.0927499999993861 0.06205976552304005 0.01288570992136292 -0.0927499999993861" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_rear_timing_belt_display_22" type="capsule" fromto="0.06205976552304005 0.01288570992136292 -0.0927499999993861 0.05842473696518304 0.01281213722142701 -0.0927499999993861" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_rear_timing_belt_display_23" type="capsule" fromto="0.05842473696518304 0.01281213722142701 -0.0927499999993861 0.05481120341617468 0.01321366038240637 -0.0927499999993861" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_rear_timing_belt_display_24" type="capsule" fromto="0.05481120341617468 0.01321366038240637 -0.0927499999993861 0.05128099343689926 0.0140834092316934 -0.0927499999993861" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_rear_timing_belt_display_25" type="capsule" fromto="0.05128099343689926 0.0140834092316934 -0.0927499999993861 0.04789450989886131 0.01540650212533686 -0.0927499999993861" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_rear_timing_belt_display_26" type="capsule" fromto="0.0112426601021911 0.09395035461966413 -0.09275000000008771 0.007856176564153144 0.09527344751330757 -0.09275000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_rear_timing_belt_display_27" type="capsule" fromto="0.007856176564153144 0.09527344751330757 -0.09275000000008771 0.004325966584877733 0.09614319636259461 -0.09275000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_rear_timing_belt_display_28" type="capsule" fromto="0.004325966584877733 0.09614319636259461 -0.09275000000008771 0.0007124330358693665 0.09654471952357398 -0.09275000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_rear_timing_belt_display_29" type="capsule" fromto="0.0007124330358693665 0.09654471952357398 -0.09275000000008771 -0.002922595521987634 0.09647114682363805 -0.09275000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_rear_timing_belt_display_30" type="capsule" fromto="-0.002922595521987634 0.09647114682363805 -0.09275000000008771 -0.006516922742248035 0.09592373711208098 -0.09275000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_rear_timing_belt_display_31" type="capsule" fromto="-0.006516922742248035 0.09592373711208098 -0.09275000000008771 -0.0100090486896374 0.09491185672083813 -0.09275000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_rear_timing_belt_display_32" type="capsule" fromto="-0.0100090486896374 0.09491185672083813 -0.09275000000008771 -0.01333922212099566 0.09345281920394991 -0.09275000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_rear_timing_belt_display_33" type="capsule" fromto="-0.01333922212099566 0.09345281920394991 -0.09275000000008771 -0.01645046284561379 0.09157158909785189 -0.09275000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_rear_timing_belt_display_34" type="capsule" fromto="-0.01645046284561379 0.09157158909785189 -0.09275000000008771 -0.01928953667209465 0.08930035477123494 -0.09275000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_rear_timing_belt_display_35" type="capsule" fromto="-0.01928953667209465 0.08930035477123494 -0.09275000000008771 -0.02180786626012721 0.08667797767313262 -0.09275000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_rear_timing_belt_display_36" type="capsule" fromto="-0.02180786626012721 0.08667797767313262 -0.09275000000008771 -0.02396236229224735 0.0837493274027537 -0.09275000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_rear_timing_belt_display_37" type="capsule" fromto="-0.02396236229224735 0.0837493274027537 -0.09275000000008771 -0.02571616074400634 0.08056451397819968 -0.09275000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_rear_timing_belt_display_38" type="capsule" fromto="-0.02571616074400634 0.08056451397819968 -0.09275000000008771 -0.0270392536376498 0.07717803044016174 -0.09275000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_rear_timing_belt_display_39" type="capsule" fromto="-0.0270392536376498 0.07717803044016174 -0.09275000000008771 -0.02790900248693683 0.07364782046088632 -0.09275000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_rear_timing_belt_display_40" type="capsule" fromto="-0.02790900248693683 0.07364782046088632 -0.09275000000008771 -0.0283105256479162 0.07003428691187795 -0.09275000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_rear_timing_belt_display_41" type="capsule" fromto="-0.0283105256479162 0.07003428691187795 -0.09275000000008771 -0.02823695294798028 0.06639925835402094 -0.09275000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_rear_timing_belt_display_42" type="capsule" fromto="-0.02823695294798028 0.06639925835402094 -0.09275000000008771 -0.0276895432364232 0.06280493113376055 -0.09275000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_rear_timing_belt_display_43" type="capsule" fromto="-0.0276895432364232 0.06280493113376055 -0.09275000000008771 -0.02667766284518035 0.05931280518637119 -0.09275000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_rear_timing_belt_display_44" type="capsule" fromto="-0.02667766284518035 0.05931280518637119 -0.09275000000008771 -0.02521862532829212 0.05598263175501292 -0.09275000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_rear_timing_belt_display_45" type="capsule" fromto="-0.02521862532829212 0.05598263175501292 -0.09275000000008771 -0.02333739522219411 0.0528713910303948 -0.09275000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_rear_timing_belt_display_46" type="capsule" fromto="-0.02333739522219411 0.0528713910303948 -0.09275000000008771 -0.02106616089557717 0.05003231720391392 -0.09275000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_rear_timing_belt_display_47" type="capsule" fromto="-0.02106616089557717 0.05003231720391392 -0.09275000000008771 -0.01844378379747484 0.04751398761588137 -0.09275000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_rear_timing_belt_display_48" type="capsule" fromto="-0.01844378379747484 0.04751398761588137 -0.09275000000008771 -0.01551513352709595 0.04535949158376124 -0.09275000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="right_rear_timing_belt_display_49" type="capsule" fromto="-0.01551513352709595 0.04535949158376124 -0.09275000000008771 -0.0123303201025419 0.04360569313200223 -0.09275000000008771" size="0.0007" rgba="0.16 0.17 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="base_ground_collision" type="box" pos="0 0.045 0" size="0.075 0.043 0.065" contype="2" conaffinity="1" group="0" rgba="0 0 0 0" mass="0" />
+    </body>
+    <light pos="0 -1 2" dir="0 0 -1" diffuse="0.8 0.8 0.8" />
+    <geom name="ground" type="plane" size="5 5 0.1" contype="1" conaffinity="2" condim="4" friction="0.9 0.002 0.0001" rgba="0.78 0.81 0.79 1" solref="0.008 1" />
+  </worldbody>
+  <option timestep="0.001" gravity="0 0 -9.8" integrator="implicitfast" solver="Newton" iterations="60" tolerance="1e-9" />
+  <visual>
+    <global offwidth="1280" offheight="720" />
+    <headlight ambient="0.35 0.35 0.35" diffuse="0.65 0.65 0.65" />
+  </visual>
+  <equality>
+    <connect name="left_front5_rear3_closure" body1="left_front5_link" body2="left_rear3_link" anchor="-0.004232994398915009 -0.05985213711027684 0.003850190232164619" solref="0.002 1" solimp="0.999 0.999 0.001" />
+    <connect name="right_front5_rear3_closure" body1="right_front5_link" body2="right_rear3_link" anchor="0.004233374737920702 -0.05985214080037864 0.003850190206495457" solref="0.002 1" solimp="0.999 0.999 0.001" />
+    <connect name="left_front4_rear2_closure" body1="left_front4_link" body2="left_rear2_link" anchor="0.05971209394082701 -0.005869229962859032 0.005999970325243399" solref="0.002 1" solimp="0.999 0.999 0.001" />
+    <connect name="right_front4_rear2_closure" body1="right_front4_link" body2="right_rear2_link" anchor="-0.05971215078921661 -0.005869269670214236 0.00399997033889874" solref="0.002 1" solimp="0.999 0.999 0.001" />
+    <joint name="left_front_timing_belt" joint1="left_front2_joint" joint2="left_front1_joint" polycoef="0 -1 0 0 0" solref="0.002 1" solimp="0.999 0.999 0.001" />
+    <joint name="left_rear_timing_belt" joint1="left_rear2_joint" joint2="left_rear1_joint" polycoef="0 1 0 0 0" solref="0.002 1" solimp="0.999 0.999 0.001" />
+    <joint name="right_front_timing_belt" joint1="right_front2_joint" joint2="right_front1_joint" polycoef="0 1 0 0 0" solref="0.002 1" solimp="0.999 0.999 0.001" />
+    <joint name="right_rear_timing_belt" joint1="right_rear2_joint" joint2="right_rear1_joint" polycoef="0 -1 0 0 0" solref="0.002 1" solimp="0.999 0.999 0.001" />
+  </equality>
+  <actuator>
+    <motor name="left_front1_joint_torque" joint="left_front1_joint" gear="1" ctrllimited="true" ctrlrange="-3 3" />
+    <motor name="left_rear1_joint_torque" joint="left_rear1_joint" gear="1" ctrllimited="true" ctrlrange="-3 3" />
+    <motor name="right_front1_joint_torque" joint="right_front1_joint" gear="1" ctrllimited="true" ctrlrange="-3 3" />
+    <motor name="right_rear1_joint_torque" joint="right_rear1_joint" gear="1" ctrllimited="true" ctrlrange="-3 3" />
+    <motor name="left_wheel_torque" joint="left_rear4_joint" gear="1" ctrllimited="true" ctrlrange="-0.8 0.8" />
+    <motor name="right_wheel_torque" joint="right_rear4_joint" gear="1" ctrllimited="true" ctrlrange="-0.8 0.8" />
+  </actuator>
+  <keyframe>
+    <key name="standing_reference" qpos="0 0 0.124721943505284 0.707106781186548 0.707106781186548 0 0 1.17764993013825 0.327293808100264 0 -0.765771425729567 -0.337329703897012 0.262781983304437 -0.335873156121613 1.17766078913226 0.327314025405133 0 -0.765752206636976 -0.337355456654227 0.262802518328527 -0.335897396447466 0.765771425729567 1.17764993013825 -0.765752206636976 -1.17766078913226" />
+  </keyframe>
+</mujoco>

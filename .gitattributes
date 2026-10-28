@@ -7,3 +7,8 @@
 *.usda binary
 *.pt binary
 src/dogleg_rl/assets/*.json binary
+*.STL binary
+*.stl binary
+*.obj binary
+# Preserve the verified model-source bytes on Windows and Linux clones.
+robots/dogleg/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
